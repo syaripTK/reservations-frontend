@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap');
+
+:root {
+  --black: #0a0a0a;
+  --white: #f5f2eb;
+  --yellow: #f0e040;
+  --red: #e63030;
+  --green: #10b981;
+  --gray: #1a1a1a;
+  --gray-mid: #2e2e2e;
+  --gray-lt: #888;
+  --border: 1px solid rgba(245, 242, 235, 0.15);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'Manrope', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--white);
+  cursor: crosshair;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: crosshair;
+  font-family: var(--font-body);
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.notyf__toast {
+  border-radius: 0 !important;
+  padding: 15px 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2) !important;
+}
+
+.notyf__message {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+}
+
+.notyf-custom-success {
+  border-left: 5px solid var(--green) !important;
+  color: var(--green) !important;
+}
+
+.notyf-custom-error {
+  border-left: 5px solid var(--red) !important;
+  color: var(--red) !important;
+}
+
+.notyf__toast--upper {
+  animation: notyf-fadein-right 0.3s forwards;
+}
+
+@keyframes notyf-fadein-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.swal-error-brutalist {
+  border-radius: 0 !important;
+  border: 0.6px solid rgba(241, 92, 92, 0.804) !important;
+  background-color: #0a0a0a;
+  box-shadow: 10px 10px 0px rgba(136, 28, 28, 0.1) !important;
+}
+
+.edit-assets-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--black), var(--gray));
+  color: var(--yellow);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.loading-spinner {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: pulseText 1.5s infinite;
+}
+
+.loading-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 1px solid #334155;
+  box-shadow: 15px 15px 0px rgba(250, 204, 21, 0.1);
+  filter: grayscale(1) contrast(1.2) brightness(0.8);
+  animation: imageFade 2s infinite alternate;
+}
+
+@keyframes pulseText {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes imageFade {
+  from {
+    filter: grayscale(1) contrast(1.2) brightness(0.5);
+    border-color: #1e293b;
+  }
+  to {
+    filter: grayscale(0.5) contrast(1.1) brightness(0.9);
+    border-color: var(--yellow);
+    box-shadow: 10px 10px 20px rgba(250, 204, 21, 0.2);
+  }
+}
+
+.loading-bar-container {
+  width: 250px;
+  height: 2px;
+  background: #1e293b;
+  margin-top: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-bar-progress {
+  width: 40%;
+  height: 100%;
+  background: var(--yellow);
+  position: absolute;
+  animation: loadingMove 1s infinite linear;
+}
+
+@keyframes loadingMove {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.assets-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--yellow) 0%,
+    var(--red) 30%,
+    rgba(245, 242, 235, 0.08) 60%,
+    transparent 100%
+  );
+}

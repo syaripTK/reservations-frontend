@@ -1,0 +1,141 @@
+.table-row {
+  border-bottom: 1px solid #1e293b;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.table-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+td {
+  padding: 16px 12px;
+  vertical-align: middle;
+}
+
+.user-aran,
+.asset-name {
+  color: #f8fafc;
+  font-weight: 800;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-handle,
+.asset-sku {
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.hatta {
+  color: var(--yellow);
+}
+
+.date-text {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.status-badger {
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 0.5px solid transparent;
+}
+
+.status-pending {
+  color: #facc15;
+  background: rgba(250, 204, 21, 0.1);
+  border-color: #facc15;
+}
+
+.status-approved {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+}
+
+.status-rejected {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+.action-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-approve,
+.btn-reject {
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 900;
+  cursor: pointer;
+  background: transparent;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.btn-approve {
+  border: 0.5px solid #10b981;
+  color: #10b981;
+}
+
+.btn-approve:hover {
+  background: #10b981;
+  color: #0f172a;
+}
+
+.btn-reject {
+  border: 0.5px solid #ef4444;
+  color: #ef4444;
+}
+
+.btn-reject:hover {
+  background: #ef4444;
+  color: #f8fafc;
+}
+
+.btn-approve:disabled {
+  background: #1e293b !important;
+  color: #6a82a4 !important;
+  border: 1px solid #6a82a4 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+  filter: grayscale(1);
+  pointer-events: none;
+}
+
+.btn-reject:disabled {
+  background: #1e293b !important;
+  color: #6a82a4 !important;
+  border: 1px solid #6a82a4 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+  filter: grayscale(1);
+  pointer-events: none;
+}
+
+.swal-btn-reject-confirm {
+  background: var(--red) !important;
+  color: #fff !important;
+  padding: 12px 25px !important;
+  font-weight: 900 !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  border: none !important;
+  cursor: pointer;
+  border-radius: 0 !important;
+  margin-right: 10px;
+}
+
+.swal-btn-reject-confirm:hover {
+  background: #dc2626 !important;
+}

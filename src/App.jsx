@@ -1,0 +1,64 @@
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Login from './pages/Login/Login';
+import Home from './pages/Home/Home';
+import Dashboard from './pages/Dashboard/Dashboard';
+import LandingPage from './pages/LandingPage/LandingPage';
+import DashboardLayout from './pages/DashboardLayout/DashboardLayout';
+import Assets from './pages/Assets/Assets';
+import AddAssets from './pages/Assets/AddAssets';
+import EditAssets from './pages/Assets/EditAssets';
+import Users from './pages/Users/Users';
+import AddUsers from './pages/Users/AddUsers';
+import EditUsers from './pages/Users/EditUsers';
+import Reservations from './pages/Reservations/Reservations';
+import UserReservations from './pages/UserReservations/UserReservations';
+import Category from './pages/Category/Category';
+import MyHistory from './pages/MyHistory/MyHistory';
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<Dashboard />} />
+
+          {/* Reservations */}
+          <Route path="/dashboard/reservations" element={<Reservations />} />
+
+          {/* Assets */}
+          <Route path="/dashboard/assets" element={<Assets />} />
+          <Route path="/dashboard/assets/add" element={<AddAssets />} />
+          <Route path="/dashboard/assets/edit/:id" element={<EditAssets />} />
+
+          {/* Users */}
+          <Route path="/dashboard/users" element={<Users />} />
+          <Route path="/dashboard/users/add" element={<AddUsers />} />
+          <Route path="/dashboard/users/edit/:id" element={<EditUsers />} />
+
+          {/* Settings */}
+          <Route path="/dashboard/settings" element={<h1>Settings</h1>} />
+
+          {/* New Reservations */}
+          <Route
+            path="/dashboard/new_reservation"
+            element={<UserReservations />}
+          />
+
+          {/* History */}
+          <Route path="/dashboard/history" element={<MyHistory />} />
+
+          {/* Profile */}
+          <Route path="/dashboard/profile" element={<h1>Profile</h1>} />
+
+          {/* Kategori */}
+          <Route path="/dashboard/category" element={<Category />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
