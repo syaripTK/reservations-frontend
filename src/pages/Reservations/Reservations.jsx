@@ -62,7 +62,7 @@ const Reservations = () => {
     return (
       <div className="edit-assets-container">
         <div className="loading-wrapper">
-          <div className="loading-spinner">Memuat Data...</div>
+          <div className="loading-spinner">LOADING_DATA...</div>
           <img src="/owi.jpeg" alt="owi" className="loading-image" />
           <div className="loading-bar-container">
             <div className="loading-bar-progress"></div>
@@ -81,9 +81,7 @@ const Reservations = () => {
       getReservations();
     } catch (error) {
       console.error(error.response);
-      showErrorNotification(
-        error.response.data.message || 'Ooops, terjadi kesalahan',
-      );
+      showErrorNotification(error.response.data.message || 'ERROR_OCCURRED');
     }
   };
 
@@ -143,9 +141,9 @@ const Reservations = () => {
       {/* HEADER */}
       <div className="assets-header">
         <div className="assets-header-left">
-          <div className="assets-label"># Reservasi</div>
+          <div className="assets-label"># RESERVATIONS</div>
           <h1 className="assets-title">
-            DATA <em>RESERVASI</em>
+            RESERVATION <em>DATA</em>
           </h1>
         </div>
       </div>
@@ -154,7 +152,7 @@ const Reservations = () => {
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
-            Total <span>{pagination.totalItems || 0}</span> reservasi ditemukan
+            Total <span>{pagination.totalItems || 0}</span> reservations found
           </div>
         </div>
         <div className="table-scroll">
@@ -162,11 +160,11 @@ const Reservations = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Peminjam</th>
-                <th>Aset</th>
-                <th>Tanggal Sewa</th>
-                <th>Status</th>
-                <th>Aksi</th>
+                <th>BORROWER</th>
+                <th>ASSET</th>
+                <th>RENTAL_DATE</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
               </tr>
             </thead>
             <tbody>
@@ -227,7 +225,7 @@ const Reservations = () => {
         {/* PAGINATION */}
         <div className="pagination">
           <div className="pagination-info">
-            Halaman <span>{currentPage}</span> dari <span>{totalPages}</span>
+            Halaman <span>{currentPage}</span> of <span>{totalPages}</span>
           </div>
           <div className="pagination-controls">
             <button

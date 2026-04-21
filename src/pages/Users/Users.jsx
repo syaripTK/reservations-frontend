@@ -45,7 +45,7 @@ const Users = () => {
     return (
       <div className="edit-assets-container">
         <div className="loading-wrapper">
-          <div className="loading-spinner">Memuat Data...</div>
+          <div className="loading-spinner">LOADING_DATA...</div>
           <img src="/owi.jpeg" alt="owi" className="loading-image" />
           <div className="loading-bar-container">
             <div className="loading-bar-progress"></div>
@@ -64,7 +64,7 @@ const Users = () => {
       await axiosInstance.delete(
         `${import.meta.env.PUBLIC_API_URL}/api/v1/admin/users/${id}`,
       );
-      notyfSuccess('User berhasil dihapus');
+      notyfSuccess('USER_DELETED_SUCCESSFULLY');
       setCurrentPage(1);
       getUsers(1);
     } catch (error) {
@@ -80,15 +80,15 @@ const Users = () => {
         <div class="text-yellow-400 mb-2">
           ${ReactDOMServer.renderToString(<AlertTriangle className="warning-icon" />)}
         </div>
-        <span class="text-xl">HAPUS USER?</span>
+        <span class="text-xl">DELETE_USER?</span>
     `,
-      text: 'Data yang telah dihapus tidak dapat dikembalikan!',
+      text: 'DELETED_DATA_CANNOT_BE_RECOVERED!',
       buttonsStyling: false,
       showCancelButton: true,
       confirmButtonColor: '#e63030',
       cancelButtonColor: '#2e2e2e',
-      confirmButtonText: 'YA HAPUS!',
-      cancelButtonText: 'BATAL',
+      confirmButtonText: 'YES_DELETE!',
+      cancelButtonText: 'CANCEL',
       color: '#f8fafc',
       borderRadius: '0',
       customClass: {
@@ -112,9 +112,9 @@ const Users = () => {
       {/* HEADER */}
       <div className="assets-header">
         <div className="assets-header-left">
-          <div className="assets-label"># Manajement Users</div>
+          <div className="assets-label"># MANAGE_USERS</div>
           <h1 className="assets-title">
-            DAFTAR <em>USER</em>
+            USER <em>LIST</em>
           </h1>
         </div>
         <div className="assets-header-right">
@@ -122,7 +122,7 @@ const Users = () => {
             className="btn-add"
             onClick={() => navigate('/dashboard/users/add')}
           >
-            <span>+ Tambah User</span>
+            <span>+ ADD_USER</span>
           </button>
         </div>
       </div>
@@ -131,7 +131,7 @@ const Users = () => {
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
-            Total <span>{pagination.totalItems || 0}</span> user ditemukan
+            Total <span>{pagination.totalItems || 0}</span> users found
           </div>
         </div>
 
@@ -187,7 +187,7 @@ const Users = () => {
         {/* PAGINATION */}
         <div className="pagination">
           <div className="pagination-info">
-            Halaman <span>{currentPage}</span> dari <span>{totalPages}</span>
+            Halaman <span>{currentPage}</span> of <span>{totalPages}</span>
           </div>
           <div className="pagination-controls">
             <button

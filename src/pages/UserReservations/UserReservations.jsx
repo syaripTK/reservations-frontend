@@ -48,11 +48,15 @@ const UserReservations = () => {
           end_date: endDate,
         },
       );
-      showSuccessNotification(response.data.message || 'Reservasi berhasil');
+      showSuccessNotification(
+        response.data.message || 'RESERVATION_SUCCESSFUL',
+      );
       navigate('/dashboard/history');
     } catch (error) {
       console.error(error.response);
-      showErrorNotification(error.response.data.message || 'Reservasi gagal!');
+      showErrorNotification(
+        error.response.data.message || 'RESERVATION_FAILED!',
+      );
     }
   };
 
@@ -65,7 +69,7 @@ const UserReservations = () => {
     return (
       <div className="edit-assets-container">
         <div className="loading-wrapper">
-          <div className="loading-spinner">Memuat Data...</div>
+          <div className="loading-spinner">LOADING_DATA...</div>
           <img src="/owi.jpeg" alt="owi" className="loading-image" />
           <div className="loading-bar-container">
             <div className="loading-bar-progress"></div>
@@ -80,7 +84,7 @@ const UserReservations = () => {
       <div className="reservations-header">
         <p>// create</p>
         <h1 className="reservation-title">
-          AJUKAN <em>RESERVASI</em>
+          SUBMIT <em>RESERVATION</em>
         </h1>
       </div>
       <main className="reservatiomn-content">
@@ -90,7 +94,7 @@ const UserReservations = () => {
           className="new-reservation"
         >
           <div className="form-grouped">
-            <label htmlFor="asset_id">Asset</label>
+            <label htmlFor="asset_id">ASSET</label>
             <select
               name="asset_id"
               id="asset_id"
@@ -98,7 +102,7 @@ const UserReservations = () => {
               onChange={(e) => setAssetId(e.target.value)}
             >
               <option value="" disabled>
-                =-Pilih Asset-=
+                =-SELECT_ASSET-=
               </option>
               {assets &&
                 assets.map((asset) => (
@@ -108,8 +112,9 @@ const UserReservations = () => {
                 ))}
             </select>
           </div>
+
           <div className="form-grouped">
-            <label htmlFor="start-date">Tanggal Mulai</label>
+            <label htmlFor="start-date">START_DATE</label>
             <input
               id="start-date"
               name="start-date"
@@ -121,7 +126,7 @@ const UserReservations = () => {
             />
           </div>
           <div className="form-grouped">
-            <label htmlFor="start-date">Tanggal Selesai</label>
+            <label htmlFor="start-date">END_DATE</label>
             <input
               id="end-date"
               name="end-date"
@@ -134,7 +139,7 @@ const UserReservations = () => {
           </div>
           <div className="button-res-wrapper">
             <button type="submit" className="btn-add">
-              <span>Simpan</span>
+              <span>SUBMIT</span>
             </button>
             <button type="reset" className="btn-reset">
               Reset
@@ -143,12 +148,12 @@ const UserReservations = () => {
         </form>
       </main>
       <div className="reservation-footer">
-        <h2>Daftar Asset</h2>
+        <h2>ASSET_LIST</h2>
         <div className="asset-filter">
-          <button className="filter-btn">all assets</button>
-          <button className="filter-btn">available</button>
-          <button className="filter-btn">booked</button>
-          <button className="filter-btn">maintenance</button>
+          <button className="filter-btn">ALL_ASSETS</button>
+          <button className="filter-btn">AVAILABLE</button>
+          <button className="filter-btn">BOOKED</button>
+          <button className="filter-btn">MAINTENANCE</button>
         </div>
         <div className="corousel">
           <div className="left-btn" onClick={scrollLeft}>
@@ -181,7 +186,7 @@ const UserReservations = () => {
                     </div>
                     <div className="card-footer">
                       <p className="asset-category">Transportation</p>
-                      <button className="card-select-btn">Pilih →</button>
+                      <button className="card-select-btn">SELECT →</button>
                     </div>
                   </div>
                 ))}

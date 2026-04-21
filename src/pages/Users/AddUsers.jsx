@@ -30,7 +30,7 @@ const AddUsers = () => {
           role,
         },
       );
-      showSuccessNotification('Data user berhasil ditambahkan!');
+      showSuccessNotification('USER_DATA_ADDED_SUCCESSFULLY!');
       navigate(-1);
     } catch (error) {
       console.error(error.response);
@@ -42,9 +42,9 @@ const AddUsers = () => {
   return (
     <div className="add-assets-container">
       <div className="add-assets-header">
-        <div className="assets-label"># Manajement User</div>
+        <div className="assets-label"># USER MANAGEMENT</div>
         <h1 className="assets-title">
-          TAMBAH <em>USER</em>
+          ADD <em>USER</em>
         </h1>
       </div>
 
@@ -53,14 +53,14 @@ const AddUsers = () => {
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="username" className="form-label">
-                Username
+                USERNAME
               </label>
               <input
                 type="text"
                 id="username"
                 name="username"
                 className="form-input"
-                placeholder="Masukkan username"
+                placeholder="Enter username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -69,14 +69,14 @@ const AddUsers = () => {
 
             <div className="form-group">
               <label htmlFor="full_name" className="form-label">
-                Nama Lengkap
+                FULL_NAME
               </label>
               <input
                 type="text"
                 id="full_name"
                 name="full_name"
                 className="form-input"
-                placeholder="Masukkan nama lengkap"
+                placeholder="Enter full name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
@@ -87,7 +87,7 @@ const AddUsers = () => {
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="password" className="form-label">
-                Password
+                PASSWORD
               </label>
               <input
                 type="password"
@@ -103,7 +103,7 @@ const AddUsers = () => {
             <div className="form-grid-column">
               <div className="form-group">
                 <label htmlFor="role" className="form-label">
-                  Role
+                  ROLE
                 </label>
                 <select
                   name="role"
@@ -114,7 +114,7 @@ const AddUsers = () => {
                   required
                 >
                   <option value="" disabled>
-                    -Pilih Role-
+                    -SELECT_ROLE-
                   </option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
@@ -126,14 +126,14 @@ const AddUsers = () => {
 
         <div className="form-actions">
           <button type="submit" className="btn-add" disabled={loading}>
-            <span>{loading ? 'Menympan..' : 'Tambahkan user'}</span>
+            <span>{loading ? 'SAVING...' : 'ADD_USER'}</span>
           </button>
           <button
             type="button"
             className="btn-reset"
             onClick={() => navigate(-1)}
           >
-            Batal
+            CANCEL
           </button>
         </div>
       </form>

@@ -44,7 +44,7 @@ const showSuccessNotification = (message) => {
     iconColor: '#10b981',
     background: '#1a1a1a',
     color: '#f8fafc',
-    timer: 1500,
+    timer: 2500,
     showConfirmButton: false,
     customClass: {
       popup: 'swal-cinematic-popup',
@@ -68,7 +68,7 @@ const showErrorNotification = (message = 'Terjadi kesalahan pada server.') => {
     iconColor: '#ef4444',
     color: '#f8fafc',
     showConfirmButton: false,
-    timer: 1500,
+    timer: 2000,
     customClass: {
       popup: 'swal-error-brutalist',
     },

@@ -64,9 +64,7 @@ const AddAssets = () => {
           },
         },
       );
-      notyfSuccess(
-        response.data.message || 'Aset baru telah terdaftar ke dalam sistem.',
-      );
+      notyfSuccess(response.data.message || 'NEW_ASSET_REGISTERED_IN_SYSTEM');
       navigate(-1);
     } catch (error) {
       console.error(error.response);
@@ -82,9 +80,9 @@ const AddAssets = () => {
     <div className="add-assets-container">
       <div className="add-assets-header">
         <div className="assets-label">
-          <p># Manajement Assets</p>
+          <p># ASSET MANAGEMENT</p>
           <h1 className="assets-title">
-            TAMBAH <em>ASET</em>
+            ADD <em>ASSET</em>
           </h1>
         </div>
       </div>
@@ -93,14 +91,14 @@ const AddAssets = () => {
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="assetName" className="form-label">
-                Nama Aset
+                ASSET_NAME
               </label>
               <input
                 type="text"
                 id="assetName"
                 name="assetName"
                 className="form-input"
-                placeholder="Masukkan nama aset"
+                placeholder="Enter asset name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
@@ -109,7 +107,7 @@ const AddAssets = () => {
 
             <div className="form-group">
               <label htmlFor="category" className="form-label">
-                Kategori
+                CATEGORY
               </label>
               <select
                 id="category"
@@ -120,7 +118,7 @@ const AddAssets = () => {
                 required
               >
                 <option value="" disabled>
-                  -Pilih Kategori-
+                  -SELECT_CATEGORY-
                 </option>
                 {categories?.map((cat) => (
                   <option key={cat.id} value={cat.id}>
@@ -152,7 +150,7 @@ const AddAssets = () => {
               <label className="form-label">Upload Gambar Aset</label>
               <div className="custom-file-upload">
                 <label htmlFor="imageUrl" className="file-upload-label">
-                  <span>PILIH FILE</span>
+                  <span>CHOOSE FILE</span>
                 </label>
                 <input
                   type="file"
@@ -178,13 +176,13 @@ const AddAssets = () => {
 
         <div className="form-group form-group-full">
           <label htmlFor="description" className="form-label">
-            Deskripsi
+            DESCRIPTION
           </label>
           <textarea
             id="description"
             name="description"
             className="form-textarea"
-            placeholder="Masukkan deskripsi lengkap aset"
+            placeholder="Enter detailed asset description"
             onChange={(e) => setDescription(e.target.value)}
             rows="4"
           ></textarea>
@@ -192,14 +190,14 @@ const AddAssets = () => {
 
         <div className="form-actions">
           <button type="submit" className="btn-add">
-            <span>{loading ? 'Menyimpan..' : 'Simpan Aset'}</span>
+            <span>{loading ? 'SAVING...' : 'SAVE_ASSET'}</span>
           </button>
           <button
             type="button"
             className="btn-reset"
             onClick={() => navigate(-1)}
           >
-            Kembali
+            BACK
           </button>
         </div>
       </form>

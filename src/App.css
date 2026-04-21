@@ -194,3 +194,35 @@ button {
     transparent 100%
   );
 }
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+.custom-date-input {
+  position: relative;
+  background: #020617;
+  border: 1px solid #334155;
+  color: var(--yellow);
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  appearance: none;
+  border-radius: 0;
+}
+
+.custom-date-input::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  color: #475569;
+  pointer-events: none;
+}

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
-import formatDate from '../../utils/formatDate';
 import './MyHistory.css';
 import { notyfError, notyfSuccess } from '../../utils/notyf';
+import formatDate from '../../utils/date/formatDate';
+import calculateRemains from '../../utils/date/calculateRemains';
 
 const MyHistory = () => {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ const MyHistory = () => {
         <div className="stats-grid">
           {/* Metric Card 1: Total Reservations */}
           <article className="metric-card metric-card--total">
-            <h3 className="metric-card__label">TOTAL RESERVASI</h3>
+            <h3 className="metric-card__label">TOTAL_RESERVATIONS</h3>
             <div className="metric-card__value">{totalReservations}</div>
             <p className="metric-card__description">All time records</p>
           </article>
@@ -114,14 +115,14 @@ const MyHistory = () => {
               <div className="focus-card__info-group">
                 <dt className="focus-card__label">Start Date</dt>
                 <dd className="focus-card__value">
-                  {mostRecentActive?.start_date}
+                  {formatDate(mostRecentActive?.start_date)}
                 </dd>
               </div>
 
               <div className="focus-card__info-group">
                 <dt className="focus-card__label">End Date</dt>
                 <dd className="focus-card__value">
-                  {mostRecentActive?.end_date}
+                  {formatDate(mostRecentActive?.end_date)}
                 </dd>
               </div>
 
@@ -129,7 +130,12 @@ const MyHistory = () => {
                 <dt className="focus-card__label">Days Remaining</dt>
                 <dd className="focus-card__countdown">
                   {/* Logic: Calculate days remaining from end_date */}
-                  <span className="countdown__value">--</span>
+                  <span className="countdown__value">
+                    {calculateRemains(
+                      mostRecentActive?.start_date,
+                      mostRecentActive?.end_date,
+                    )}
+                  </span>
                 </dd>
               </div>
             </div>

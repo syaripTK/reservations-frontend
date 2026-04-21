@@ -90,15 +90,15 @@ const Assets = () => {
         <div class="text-yellow-400 mb-2">
           ${ReactDOMServer.renderToString(<AlertTriangle className="warning-icon" />)}
         </div>
-        <span class="text-xl">HAPUS ASET?</span>
+        <span class="text-xl">DELETE_ASSET?</span>
     `,
-      text: 'Asset yang telah dihapus tidak dapat dikembalikan!',
+      text: 'DELETED_ASSET_CANNOT_BE_RECOVERED!',
       buttonsStyling: false,
       showCancelButton: true,
       confirmButtonColor: '#e63030',
       cancelButtonColor: '#2e2e2e',
-      confirmButtonText: 'YA HAPUS!',
-      cancelButtonText: 'BATAL',
+      confirmButtonText: 'YES_DELETE!',
+      cancelButtonText: 'CANCEL',
       color: '#f8fafc',
       borderRadius: '0',
       customClass: {
@@ -121,7 +121,7 @@ const Assets = () => {
     return (
       <div className="edit-assets-container">
         <div className="loading-wrapper">
-          <div className="loading-spinner">Memuat Data...</div>
+          <div className="loading-spinner">LOADING_DATA...</div>
           <img src="/owi.jpeg" alt="owi" className="loading-image" />
           <div className="loading-bar-container">
             <div className="loading-bar-progress"></div>
@@ -136,9 +136,9 @@ const Assets = () => {
       {/* HEADER */}
       <div className="assets-header">
         <div className="assets-header-left">
-          <div className="assets-label"># Manajement Assets</div>
+          <div className="assets-label"># ASSET MANAGEMENT</div>
           <h1 className="assets-title">
-            DAFTAR <em>ASET</em>
+            ASSET <em>LIST</em>
           </h1>
         </div>
         <div className="assets-header-right">
@@ -146,7 +146,7 @@ const Assets = () => {
             className="btn-add"
             onClick={() => navigate('/dashboard/assets/add')}
           >
-            <span>+ Tambah Aset</span>
+            <span>+ ADD_ASSET</span>
           </button>
         </div>
       </div>
@@ -155,7 +155,7 @@ const Assets = () => {
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
-            Total <span>{assets.length || 0}</span> aset ditemukan
+            Total <span>{assets.length || 0}</span> assets found
           </div>
         </div>
 
@@ -216,7 +216,7 @@ const Assets = () => {
         {/* PAGINATION */}
         <div className="pagination">
           <div className="pagination-info">
-            Halaman <span>{currentPage}</span> dari <span>{totalPages}</span>
+            Halaman <span>{currentPage}</span> of <span>{totalPages}</span>
           </div>
           <div className="pagination-controls">
             <button

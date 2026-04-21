@@ -71,7 +71,7 @@ const EditAssets = () => {
   if (loading) {
     return (
       <div className="edit-assets-container">
-        <div className="loading-spinner">Memuat data aset...</div>
+        <div className="loading-spinner">LOADING_ASSET_DATA...</div>
       </div>
     );
   }
@@ -128,12 +128,12 @@ const EditAssets = () => {
         },
       );
 
-      showSuccessNotification('Aset berhasil diubah!');
+      showSuccessNotification('ASSET_UPDATED_SUCCESSFULLY!');
       navigate(-1);
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Gagal!',
+        title: 'FAILED!',
         text:
           error.response?.data?.message ||
           'Terjadi kesalahan saat memperbarui data',
@@ -157,9 +157,9 @@ const EditAssets = () => {
   return (
     <div className="edit-assets-container">
       <div className="edit-assets-header">
-        <div className="assets-label"># Manajement Assets</div>
+        <div className="assets-label"># ASSET MANAGEMENT</div>
         <h1 className="assets-title">
-          Edit <em>Aset</em>
+          EDIT <em>ASSET</em>
         </h1>
       </div>
 
@@ -169,14 +169,14 @@ const EditAssets = () => {
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="assetName" className="form-label">
-                Nama Aset
+                ASSET_NAME
               </label>
               <input
                 type="text"
                 id="assetName"
                 name="name"
                 className="form-input"
-                placeholder="Masukkan nama aset"
+                placeholder="Enter asset name"
                 value={asset.name}
                 onChange={handleChange}
                 required
@@ -185,7 +185,7 @@ const EditAssets = () => {
 
             <div className="form-group">
               <label htmlFor="category" className="form-label">
-                Kategori
+                CATEGORY
               </label>
               <select
                 id="category"
@@ -195,7 +195,7 @@ const EditAssets = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Pilih kategori</option>
+                <option value="">SELECT_CATEGORY</option>
                 {categories &&
                   categories.map((cat) => (
                     <option key={cat.id} value={cat.id}>
@@ -296,7 +296,7 @@ const EditAssets = () => {
 
         <div className="form-actions">
           <button type="submit" className="btn-add" disabled={loading}>
-            <span>{loading ? 'Memperbarui...' : 'Update Aset'}</span>
+            <span>{loading ? 'UPDATING...' : 'UPDATE_ASSET'}</span>
           </button>
           <button
             type="button"
@@ -304,7 +304,7 @@ const EditAssets = () => {
             onClick={() => navigate(-1)}
             disabled={loading}
           >
-            Batal
+            CANCEL
           </button>
         </div>
       </form>

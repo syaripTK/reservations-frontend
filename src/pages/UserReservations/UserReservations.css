@@ -28,7 +28,6 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  /* KUNCI — supaya tidak overwidth */
   width: 100%;
   min-width: 0;
   overflow: hidden;
@@ -372,9 +371,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   display: none;
 }
 
-/* ══════════════════════════════════════════════
-   CARD ASSET — ukuran TETAP, tidak stretch
-══════════════════════════════════════════════ */
 .card-asset {
   flex: 0 0 200px;
   width: 200px;

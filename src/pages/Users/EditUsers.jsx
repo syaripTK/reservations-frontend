@@ -51,7 +51,7 @@ const EditUsers = () => {
           role,
         },
       );
-      showSuccessNotification('Data user berhasil diupdate');
+      showSuccessNotification('USER_DATA_UPDATED_SUCCESSFULLY');
       navigate(-1);
     } catch (error) {
       console.error(error.response);
@@ -73,7 +73,7 @@ const EditUsers = () => {
   return (
     <div className="add-assets-container">
       <div className="add-assets-header">
-        <div className="assets-label"># Manajement User</div>
+        <div className="assets-label"># USER MANAGEMENT</div>
         <h1 className="assets-title">
           UPDATE <em>USER</em>
         </h1>
@@ -84,14 +84,14 @@ const EditUsers = () => {
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="username" className="form-label">
-                Username
+                USERNAME
               </label>
               <input
                 type="text"
                 id="username"
                 name="username"
                 className="form-input"
-                placeholder="Masukkan username"
+                placeholder="Enter username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -105,14 +105,14 @@ const EditUsers = () => {
 
             <div className="form-group">
               <label htmlFor="full_name" className="form-label">
-                Nama Lengkap
+                FULL_NAME
               </label>
               <input
                 type="text"
                 id="full_name"
                 name="full_name"
                 className="form-input"
-                placeholder="Masukkan nama lengkap"
+                placeholder="Enter full name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
@@ -129,7 +129,7 @@ const EditUsers = () => {
             <div className="form-grid-column">
               <div className="form-group">
                 <label htmlFor="role" className="form-label">
-                  Role
+                  ROLE
                 </label>
                 <select
                   name="role"
@@ -140,7 +140,7 @@ const EditUsers = () => {
                   required
                 >
                   <option value="" disabled>
-                    -Pilih Role-
+                    -SELECT_ROLE-
                   </option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
@@ -157,14 +157,14 @@ const EditUsers = () => {
 
         <div className="form-actions">
           <button type="submit" className="btn-add" disabled={loading}>
-            <span>{loading ? 'Menyimpan..' : 'Simpan perubahan'}</span>
+            <span>{loading ? 'SAVING...' : 'SAVE_CHANGES'}</span>
           </button>
           <button
             type="button"
             className="btn-reset"
             onClick={() => navigate(-1)}
           >
-            Batal
+            CANCEL
           </button>
         </div>
       </form>

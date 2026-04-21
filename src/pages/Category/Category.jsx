@@ -55,7 +55,7 @@ const Category = () => {
       getCategories();
     } catch (error) {
       console.error(error.response);
-      notyfError(error.response.data.message || 'Gagal menyimpan kategori!');
+      notyfError(error.response.data.message || 'FAILED_TO_SAVE_CATEGORY');
     } finally {
       setLoading(false);
     }
@@ -79,8 +79,8 @@ const Category = () => {
     `,
       background: '#0a0a0a',
       showCancelButton: true,
-      confirmButtonText: 'SIMPAN',
-      cancelButtonText: 'BATAL',
+      confirmButtonText: 'SAVE',
+      cancelButtonText: 'CANCEL',
       buttonsStyling: false,
       customClass: {
         popup: 'swal-brutalist-popup',
@@ -105,7 +105,7 @@ const Category = () => {
         notyfSuccess('CATEGORY UPDATED');
         if (refreshData) refreshData();
       } catch (error) {
-        notyfError(error.response?.data?.message || 'UPDATE FAILED');
+        notyfError(error.response?.data?.message || 'CATEGORY_UPDATE_FAILED');
       }
     }
   };
@@ -119,14 +119,14 @@ const Category = () => {
       getCategories;
     } catch (error) {
       console.error(error.response);
-      notyfError(error.response.data.message || 'Gagal menghapus data!');
+      notyfError(error.response.data.message || 'FAILED_TO_DELETE_DATA');
     }
   };
   return (
     <div className="category-page-container">
       <div className="category-header-section">
-        <p className="assets-label"># Kelola kategori</p>
-        <h1 className="category-page-title">Kategori</h1>
+        <p className="assets-label">// MANAGE CATEGORIES</p>
+        <h1 className="category-page-title">CATEGORIES</h1>
       </div>
       <div className="category-cards-wrapper">
         <div className="category-cards-grid">
@@ -153,7 +153,7 @@ const Category = () => {
                     className="category-card-delete-btn"
                     onClick={() => handleDeleteCategory(cat.id)}
                   >
-                    Hapus
+                    DELETE
                   </button>
                 </div>
               </div>
@@ -163,7 +163,7 @@ const Category = () => {
 
       <div className="add-category-section">
         <div className="add-category-container">
-          <h2 className="add-category-title">Tambah Kategori Baru</h2>
+          <h2 className="add-category-title">ADD_NEW_CATEGORY</h2>
 
           <form
             onSubmit={handleSubmit}
@@ -176,13 +176,13 @@ const Category = () => {
                   htmlFor="category-name"
                   className="form-label-category-name"
                 >
-                  Nama Kategori
+                  CATEGORY_NAME
                 </label>
                 <input
                   type="text"
                   id="category-name"
                   className="form-input-category-name"
-                  placeholder="Masukkan nama kategori"
+                  placeholder="Enter category name"
                   value={namaKategori}
                   onChange={(e) => setNamaKategori(e.target.value)}
                   required
@@ -194,12 +194,12 @@ const Category = () => {
                   htmlFor="category-description"
                   className="form-label-category-description"
                 >
-                  Deskripsi
+                  DESCRIPTION
                 </label>
                 <textarea
                   id="category-description"
                   className="form-textarea-category-description"
-                  placeholder="Masukkan deskripsi kategori"
+                  placeholder="Enter category description"
                   value={deskripsi}
                   onChange={(e) => setDeskripsi(e.target.value)}
                   rows="4"
@@ -213,10 +213,10 @@ const Category = () => {
                 className="form-submit-btn-category"
                 disabled={loading}
               >
-                <span>{loading ? 'Menyimpan..' : 'Tambah Kategori'}</span>
+                <span>{loading ? 'SAVING...' : 'ADD_CATEGORY'}</span>
               </button>
               <button type="reset" className="form-reset-btn-category">
-                Bersihkan
+                CLEAR
               </button>
             </div>
           </form>
