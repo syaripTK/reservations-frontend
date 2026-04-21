@@ -144,6 +144,27 @@ npm run dev
 - **Access**: Protected
 - **Response**: Single asset object with category details
 
+```json
+{
+  "status": "success",
+  "message": "Detail aset berhasil diambil",
+  "data": {
+    "id": 1,
+    "name": "Laptop Dell",
+    "sku": "LAPTOP001",
+    "status": "available",
+    "description": "High-performance laptop",
+    "image_url": "/uploads/image-file.jpg",
+    "category": {
+      "id": 1,
+      "name": "Electronics"
+    },
+    "createdAt": "2026-04-16T10:00:00Z",
+    "updatedAt": "2026-04-16T10:00:00Z"
+  }
+}
+```
+
 ---
 
 ## 3. USERS MODULE
@@ -180,6 +201,28 @@ npm run dev
 }
 ```
 
+### Get User Profile
+
+**GET** `/api/v1/users/:id`
+
+- **Access**: Protected
+- **Response**:
+
+```json
+{
+  "status": "success",
+  "message": "Detail user berhasil diambil",
+  "data": {
+    "id": 2,
+    "username": "john",
+    "full_name": "John Doe",
+    "role": "user",
+    "createdAt": "2026-04-16T10:00:00Z",
+    "updatedAt": "2026-04-16T10:00:00Z"
+  }
+}
+```
+
 ### Update Profile
 
 **PUT** `/api/v1/users/profile`
@@ -190,7 +233,7 @@ npm run dev
 ```json
 {
   "full_name": "New Name",
-  "password": "new_password" 
+  "password": "new_password"
 }
 ```
 
@@ -200,12 +243,19 @@ npm run dev
 
 ### 🔴 ALL ADMIN ENDPOINTS REQUIRE ADMIN ROLE
 
-### Get All Asets (Admin View)
+### Get All Assets (Admin View)
 
 **GET** `/api/v1/admin/assets`
 
 - **Access**: Protected - Admin Only
 - **Query**: Same as regular assets endpoint
+
+### Get Asset Detail (Admin View)
+
+**GET** `/api/v1/admin/assets/:id`
+
+- **Access**: Protected - Admin Only
+- **Response**: Single asset object with category details
 
 ### Create Asset
 
@@ -480,6 +530,38 @@ image: file (optional, jpg/png/jpeg, max 5MB)
 - **Access**: Protected
 - **Response**: List peminjaman user dengan detail aset
 
+### Get Reservation Detail
+
+**GET** `/api/v1/reservations/:id`
+
+- **Access**: Protected (User can access their own, Admin can access all)
+- **Response**:
+
+```json
+{
+  "status": "success",
+  "message": "Detail peminjaman berhasil diambil",
+  "data": {
+    "id": 1,
+    "status": "pending",
+    "start_date": "2026-04-17T00:00:00Z",
+    "end_date": "2026-04-20T00:00:00Z",
+    "request_date": "2026-04-16T10:00:00Z",
+    "user": {
+      "id": 2,
+      "username": "john",
+      "full_name": "John Doe"
+    },
+    "asset": {
+      "id": 5,
+      "name": "Laptop Dell",
+      "sku": "LAPTOP001",
+      "status": "booked"
+    }
+  }
+}
+```
+
 ### Admin: Get All Reservations
 
 **GET** `/api/v1/reservations`
@@ -503,11 +585,38 @@ image: file (optional, jpg/png/jpeg, max 5MB)
 **PUT** `/api/v1/reservations/:id/reject`
 
 - **Access**: Protected - Admin Only
+- **Body**:
+
+```json
+{
+  "reject_reason": "Aset tidak sesuai dengan kebutuhan"
+}
+```
+
+- **Validation**:
+  - `reject_reason`: Required, harus diisi dengan alasan penolakan
 - **Behavior**:
   - Status berubah dari "pending" → "rejected"
+  - ✅ Menyimpan alasan penolakan di kolom `reject_reason`
   - ✅ Aset berubah kembali menjadi: "available"
   - ✅ Menggunakan Sequelize Transaction
 - **Response**: Updated reservation object
+
+```json
+{
+  "status": "success",
+  "message": "Peminjaman berhasil ditolak",
+  "data": {
+    "id": 1,
+    "user_id": 2,
+    "asset_id": 5,
+    "status": "rejected",
+    "reject_reason": "Aset tidak sesuai dengan kebutuhan",
+    "start_date": "2026-04-17T00:00:00Z",
+    "end_date": "2026-04-20T00:00:00Z"
+  }
+}
+```
 
 ### User/Admin: Return Asset
 
@@ -522,6 +631,215 @@ image: file (optional, jpg/png/jpeg, max 5MB)
 
 ---
 
+### User: Cancel Pending Reservation
+
+**DELETE** `/api/v1/reservations/:id/cancel`
+
+- **Access**: Protected (Hanya user yang membuat reservasi)
+- **Requirement**: Status reservation harus "pending"
+- **Behavior**:
+  - Status berubah dari "pending" → "rejected"
+  - ✅ Aset berubah kembali menjadi: "available"
+  - ✅ Menggunakan Sequelize Transaction
+- **Parameters**:
+  - `id` (path) - Reservation ID
+- **Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Permintaan peminjaman berhasil dibatalkan",
+    "data": {
+      "id": 1,
+      "user_id": 1,
+      "asset_id": 1,
+      "status": "rejected",
+      ...
+    }
+  }
+  ```
+
+---
+
+## 6. DASHBOARD MODULE
+
+### User Dashboard: Get User Statistics
+
+**GET** `/api/v1/reservations/dashboard/user-stats`
+
+- **Access**: Protected (User)
+- **Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Statistik dashboard user berhasil diambil",
+    "data": {
+      "stats": {
+        "pending": 2,
+        "approved": 5,
+        "rejected": 1,
+        "returned": 8,
+        "total": 16
+      },
+      "recentReservations": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "asset_id": 1,
+          "status": "approved",
+          "start_date": "2026-05-01T00:00:00.000Z",
+          "end_date": "2026-05-10T00:00:00.000Z",
+          "asset": {
+            "id": 1,
+            "name": "Laptop",
+            "sku": "SKU001"
+          }
+        }
+        ...
+      ]
+    }
+  }
+  ```
+
+### User Dashboard: Get User Summary
+
+**GET** `/api/v1/reservations/dashboard/user-summary`
+
+- **Access**: Protected (User)
+- **Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Ringkasan dashboard user berhasil diambil",
+    "data": {
+      "totalReservations": 16,
+      "approvedReservations": 5,
+      "pendingReservations": 2,
+      "returnedReservations": 8,
+      "rejectedReservations": 1,
+      "activeReservations": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "asset_id": 1,
+          "status": "approved",
+          "start_date": "2026-05-01T00:00:00.000Z",
+          "end_date": "2026-05-10T00:00:00.000Z",
+          "asset": {
+            "id": 1,
+            "name": "Laptop",
+            "sku": "SKU001"
+          }
+        }
+      ]
+    }
+  }
+  ```
+
+### Admin Dashboard: Get Overall Statistics
+
+**GET** `/api/v1/reservations/dashboard/admin-stats`
+
+- **Access**: Protected (Admin Only)
+- **Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Statistik dashboard admin berhasil diambil",
+    "data": {
+      "stats": {
+        "total": 50,
+        "pending": 8,
+        "approved": 25,
+        "rejected": 5,
+        "returned": 12,
+        "totalUsers": 10
+      },
+      "recentReservations": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "asset_id": 1,
+          "status": "approved",
+          "start_date": "2026-05-01T00:00:00.000Z",
+          "end_date": "2026-05-10T00:00:00.000Z",
+          "user": {
+            "id": 1,
+            "username": "johndoe",
+            "full_name": "John Doe"
+          },
+          "asset": {
+            "id": 1,
+            "name": "Laptop",
+            "sku": "SKU001"
+          }
+        }
+        ...
+      ]
+    }
+  }
+  ```
+
+### Admin Dashboard: Get Summary & Insights
+
+**GET** `/api/v1/reservations/dashboard/admin-summary`
+
+- **Access**: Protected (Admin Only)
+- **Optional Query Parameters**:
+  - `startDate` - Filter dari tanggal (format: ISO 8601)
+  - `endDate` - Filter sampai tanggal (format: ISO 8601)
+- **Response**:
+  ```json
+  {
+    "success": true,
+    "message": "Ringkasan dashboard admin berhasil diambil",
+    "data": {
+      "summary": {
+        "totalReservations": 50,
+        "approvedCount": 25,
+        "rejectedCount": 5,
+        "approvalRate": "83%",
+        "pendingCount": 8,
+        "activeCount": 25,
+        "overdueCount": 2
+      },
+      "pendingReservations": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "asset_id": 1,
+          "status": "pending",
+          "start_date": "2026-05-01T00:00:00.000Z",
+          "end_date": "2026-05-10T00:00:00.000Z",
+          "user": {
+            "id": 1,
+            "username": "johndoe",
+            "full_name": "John Doe"
+          },
+          "asset": {
+            "id": 1,
+            "name": "Laptop",
+            "sku": "SKU001"
+          }
+        }
+        ...
+      ],
+      "activeReservations": [...],
+      "overdueReservations": [...],
+      "userActivity": [
+        {
+          "id": 1,
+          "username": "johndoe",
+          "full_name": "John Doe",
+          "reservationCount": "12"
+        }
+        ...
+      ]
+    }
+  }
+  ```
+
+---
+
 ## Role-Based Access Control (RBAC)
 
 | Endpoint                                | User | Admin |
@@ -530,7 +848,10 @@ image: file (optional, jpg/png/jpeg, max 5MB)
 | Assets (GET)                            | ✅   | ✅    |
 | Reservations (Create, Get My)           | ✅   | ✅    |
 | Reservations (Return)                   | ✅   | ✅    |
+| Reservations (Cancel Pending)           | ✅   | ❌    |
 | Reservations (Get All, Approve, Reject) | ❌   | ✅    |
+| Dashboard (User Stats, User Summary)    | ✅   | ✅    |
+| Dashboard (Admin Stats, Admin Summary)  | ❌   | ✅    |
 | Admin (Assets CRUD)                     | ❌   | ✅    |
 | Admin (Categories CRUD)                 | ❌   | ✅    |
 | Admin (Users CRUD)                      | ❌   | ✅    |
@@ -546,7 +867,6 @@ Semua error mengikuti format berikut:
   "status": "error",
   "message": "Deskripsi error",
   "errors": [
-    // optional, untuk validation error
     {
       "field": "username",
       "message": "Username harus diisi"
@@ -580,7 +900,8 @@ Semua error mengikuti format berikut:
 ✅ Comprehensive Error Handling  
 ✅ Asset Status Management (available → booked → available/returned)  
 ✅ Pagination untuk list endpoints  
-✅ CORS support
+✅ CORS support  
+✅ Rejection Reason Tracking - Admin dapat menambahkan alasan penolakan saat reject peminjaman
 
 ---
 

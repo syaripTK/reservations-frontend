@@ -129,7 +129,6 @@ const MyHistory = () => {
               <div className="focus-card__info-group">
                 <dt className="focus-card__label">Days Remaining</dt>
                 <dd className="focus-card__countdown">
-                  {/* Logic: Calculate days remaining from end_date */}
                   <span className="countdown__value">
                     {calculateRemains(
                       mostRecentActive?.start_date,
@@ -218,19 +217,16 @@ const MyHistory = () => {
               </thead>
 
               <tbody className="history-log__table-body">
-                {/* Logic: Map through reservations */}
                 {reservations.map((reservation, index) => (
                   <tr
                     key={reservation.id}
                     className="table__row"
                     data-status={reservation.status}
                   >
-                    {/* No Column */}
                     <td className="table__cell table__cell--no">
                       <span className="table__cell-content">{index + 1}</span>
                     </td>
 
-                    {/* Asset Details Column */}
                     <td className="table__cell table__cell--asset">
                       <div className="asset-details">
                         <span className="asset-details__name">
@@ -242,7 +238,6 @@ const MyHistory = () => {
                       </div>
                     </td>
 
-                    {/* Duration Column */}
                     <td className="table__cell table__cell--duration">
                       <span className="table__cell-content">
                         {formatDate(reservation.start_date)} to{' '}
@@ -250,14 +245,12 @@ const MyHistory = () => {
                       </span>
                     </td>
 
-                    {/* Request Date Column */}
                     <td className="table__cell table__cell--request-date">
                       <time className="table__cell-content">
                         {formatDate(reservation.request_date)}
                       </time>
                     </td>
 
-                    {/* Status Column */}
                     <td className="table__cell table__cell--status">
                       <span
                         className={`history-status-badge history-status-badge--${reservation.status}`}
@@ -266,9 +259,17 @@ const MyHistory = () => {
                       >
                         {reservation.status.toUpperCase()}
                       </span>
+                      {reservation.status === 'rejected' ? (
+                        <div className="rejection-note">
+                          <strong>REASON:</strong>{' '}
+                          {reservation.reject_reason ||
+                            'No specific reason provided.'}
+                        </div>
+                      ) : (
+                        <span className="text-muted">-</span>
+                      )}
                     </td>
 
-                    {/* Actions Column */}
                     <td className="table__cell table__cell--actions">
                       <div className="action-buttons">
                         {reservation.status === 'pending' && (

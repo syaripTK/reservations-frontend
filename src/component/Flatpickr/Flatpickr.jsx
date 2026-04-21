@@ -1,37 +1,20 @@
-import React, { useState } from 'react';
-import { DayPicker } from 'react-day-picker';
-import { format } from 'date-fns';
-import 'react-day-picker/dist/style.css';
+import React from 'react';
 import './Flatpickr.css';
-
 const AssetDatePicker = ({ selectedDate, onDateChange }) => {
-  const [showCalendar, setShowCalendar] = useState(false);
-
   return (
     <div className="datepicker-container">
-      <label className="input-label">RESERVATION_DATE</label>
-
-      {/* Input Trigger */}
-      <input
-        readOnly
-        className="brutalist-input"
-        value={selectedDate ? format(selectedDate, 'PPP') : 'SELECT DATE'}
-        onClick={() => setShowCalendar(!showCalendar)}
-      />
-
-      {/* Popover Calendar */}
-      {showCalendar && (
-        <div className="calendar-popover">
-          <DayPicker
-            mode="single"
-            selected={selectedDate}
-            onSelect={(date) => {
-              onDateChange(date);
-              setShowCalendar(false);
-            }}
-            disabled={{ before: new Date() }}
-          />
-        </div>
+      <label className="datepicker-label">SYSTEM_DATE_ACCESS</label>
+      <div className="datepicker-input-wrapper">
+        <input
+          type="date"
+          value={selectedDate || ''}
+          onChange={(e) => onDateChange(e.target.value)}
+          className="datepicker-input"
+        />
+        <span className="datepicker-decoration">[ REQ_LOG ]</span>
+      </div>
+      {selectedDate && (
+        <small className="datepicker-status">LOCKED_DATE: {selectedDate}</small>
       )}
     </div>
   );

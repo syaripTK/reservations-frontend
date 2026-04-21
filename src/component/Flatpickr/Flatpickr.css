@@ -1,53 +1,56 @@
-/* Container & Input */
 .datepicker-container {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
-.brutalist-input {
-  width: 100%;
-  background: #020617 !important;
-  border: 2px solid #1e293b !important;
-  color: #ef4444 !important;
-  padding: 12px !important;
-  font-family: 'Courier New', monospace !important;
+.datepicker-label {
+  font-size: 10px;
   font-weight: 900;
-  cursor: pointer;
-  border-radius: 0 !important;
+  letter-spacing: 2px;
+  color: #ef4444; 
   text-transform: uppercase;
 }
 
-.calendar-popover {
+.datepicker-input-wrapper {
+  position: relative;
+  background: #020617;
+  border: 2px solid #1e293b;
+}
+
+.datepicker-input-wrapper:focus-within {
+  border-color: #ef4444;
+}
+
+.datepicker-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 12px;
+  color: #ef4444;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  outline: none;
+  text-transform: uppercase;
+  color-scheme: dark; 
+}
+
+.datepicker-decoration {
   position: absolute;
-  z-index: 50;
-  margin-top: 8px;
-  background: #0f172a !important;
-  border: 2px solid #ef4444 !important;
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 1) !important;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 10px;
+  font-family: monospace;
+  color: #475569;
 }
 
-.rdp {
-  --rdp-accent-color: #ef4444 !important;
-  --rdp-background-color: #450a0a !important;
-  margin: 1em !important;
-  color: #f8fafc;
-}
-
-.rdp-day_selected {
-  background-color: var(--rdp-accent-color) !important;
-  color: white !important;
-  font-weight: 900 !important;
-  border-radius: 0 !important;
-}
-
-.rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
-  background-color: #1e293b !important;
-  border-radius: 0 !important;
-}
-
-.rdp-head_cell {
-  font-size: 0.8rem !important;
-  font-weight: 900 !important;
-  color: #64748b !important;
-  text-transform: uppercase;
+.datepicker-status {
+  font-size: 9px;
+  font-family: monospace;
+  color: #64748b;
+  font-style: italic;
 }

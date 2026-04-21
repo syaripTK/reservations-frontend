@@ -8,6 +8,7 @@ import {
   showSuccessNotification,
 } from '../../utils/notyf';
 import { useNavigate } from 'react-router-dom';
+import AssetDatePicker from '../../component/Flatpickr/Flatpickr';
 
 const UserReservations = () => {
   const navigate = useNavigate();
@@ -112,6 +113,13 @@ const UserReservations = () => {
                 ))}
             </select>
           </div>
+          {/* <div className="form-grouped">
+            <label htmlFor="start-date"></label>
+            <AssetDatePicker
+              selectedDate={startDate}
+              onDateChange={(date) => setStartDate(date)}
+            />
+          </div> */}
 
           <div className="form-grouped">
             <label htmlFor="start-date">START_DATE</label>
