@@ -8,7 +8,6 @@ import {
   showSuccessNotification,
 } from '../../utils/notyf';
 import { useNavigate } from 'react-router-dom';
-import AssetDatePicker from '../../component/Flatpickr/Flatpickr';
 
 const UserReservations = () => {
   const navigate = useNavigate();
@@ -21,10 +20,16 @@ const UserReservations = () => {
 
   useEffect(() => {
     const saveId = localStorage.getItem('rebook_id');
+    const resId = localStorage.getItem('res_id');
     if (saveId) {
       console.info('RECOVERING_REBOOK_SESSION', saveId);
       getReservationsDetail(saveId);
       localStorage.removeItem('rebook_id');
+    }
+    if (resId) {
+      console.info('RECOVERING_REBOOK_ID', resId);
+      getAssetDetail(resId);
+      localStorage.removeItem('res_id');
     }
     getAssets();
   }, []);
@@ -34,10 +39,24 @@ const UserReservations = () => {
       const response = await axiosInstance.get(
         `${import.meta.env.PUBLIC_API_URL}/api/v1/reservations/${id}`,
       );
-      const reservaition = response.data.data;
-      setAssetId(reservaition.asset_id);
+      const reservation = response.data.data;
+      setAssetId(reservation.asset_id);
     } catch (error) {
       console.error(error.response);
+    }
+  };
+
+  const getAssetDetail = async (id) => {
+    try {
+      setLoading(true);
+      const response = await axiosInstance.get(
+        `${import.meta.env.PUBLIC_API_URL}/api/v1/assets/${id}`,
+      );
+      setAssetId(response.data.data.id);
+    } catch (err) {
+      console.error('Error fetching asset detail:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,6 +102,10 @@ const UserReservations = () => {
     scrollRef.current.scrollBy({ left: -230, behavior: 'smooth' });
   const scrollRight = () =>
     scrollRef.current.scrollBy({ left: 230, behavior: 'smooth' });
+
+  const handleAssetDetail = (id) => {
+    navigate(`/dashboard/assets/detail/${id}`);
+  };
 
   if (loading) {
     return (
@@ -189,10 +212,13 @@ const UserReservations = () => {
           </div>
           <div className="card-scroller">
             <div className="card-asset-wrapper" ref={scrollRef}>
-              {/* Dummy */}
               {assets &&
                 assets.map((asset) => (
-                  <div className={`card-asset ${asset.status}`} key={asset.id}>
+                  <div
+                    className={`card-asset ${asset.status}`}
+                    key={asset.id}
+                    onClick={() => handleAssetDetail(asset.id)}
+                  >
                     <div className="card-asset-header">
                       <img
                         src={getFullImageUrl(asset.image_url)}

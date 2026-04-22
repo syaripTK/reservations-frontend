@@ -9,7 +9,7 @@ export default defineConfig({
     historyApiFallback: true,
   },
   html: {
-    title: 'Asset Flow',
+    title: 'Assetflow',
     favicon: './src/assets/bg.jpeg',
     meta: {
       description: 'Aplikasi reservasi aset perusahaan',

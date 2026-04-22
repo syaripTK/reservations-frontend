@@ -12,6 +12,8 @@ import {
 import ReactDOMServer from 'react-dom/server';
 import './Assets.css';
 import Swal from 'sweetalert2';
+import { notyfSuccess } from '../../utils/notyf';
+import AssetCatalog from '../../component/LandingPage/AssetCatalog';
 
 const Assets = () => {
   const navigate = useNavigate();
@@ -72,9 +74,10 @@ const Assets = () => {
   const confirmDelete = async (id) => {
     setLoading(true);
     try {
-      await axiosInstance.delete(
+      const response = await axiosInstance.delete(
         `${import.meta.env.PUBLIC_API_URL}/api/v1/admin/assets/${id}`,
       );
+      notyfSuccess(response.data.message);
       setCurrentPage(1);
       getAssets(1);
     } catch (error) {

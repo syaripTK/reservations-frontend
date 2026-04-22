@@ -16,6 +16,7 @@ import UserReservations from './pages/UserReservations/UserReservations';
 import Category from './pages/Category/Category';
 import MyHistory from './pages/MyHistory/MyHistory';
 import NotFound from './pages/NotFound/NotFound';
+import AssetDetail from './pages/Assets/AssetDetail';
 const App = () => {
   return (
     <BrowserRouter>
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/dashboard/assets" element={<Assets />} />
           <Route path="/dashboard/assets/add" element={<AddAssets />} />
           <Route path="/dashboard/assets/edit/:id" element={<EditAssets />} />
+          <Route path="/dashboard/assets/detail/:id" element={<AssetDetail />} />
 
           {/* Users */}
           <Route path="/dashboard/users" element={<Users />} />
