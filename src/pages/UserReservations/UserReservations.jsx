@@ -20,8 +20,26 @@ const UserReservations = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    const saveId = localStorage.getItem('rebook_id');
+    if (saveId) {
+      console.info('RECOVERING_REBOOK_SESSION', saveId);
+      getReservationsDetail(saveId);
+      localStorage.removeItem('rebook_id');
+    }
     getAssets();
   }, []);
+
+  const getReservationsDetail = async (id) => {
+    try {
+      const response = await axiosInstance.get(
+        `${import.meta.env.PUBLIC_API_URL}/api/v1/reservations/${id}`,
+      );
+      const reservaition = response.data.data;
+      setAssetId(reservaition.asset_id);
+    } catch (error) {
+      console.error(error.response);
+    }
+  };
 
   const getAssets = async () => {
     setLoading(true);

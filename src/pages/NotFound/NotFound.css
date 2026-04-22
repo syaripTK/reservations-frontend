@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap');
+
+:root {
+  --black: #0a0a0a;
+  --white: #f5f2eb;
+  --yellow: #f0e040;
+  --red: #e63030;
+  --gray: #1a1a1a;
+  --gray-mid: #2e2e2e;
+  --gray-lt: #888888;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'Manrope', sans-serif;
+}
+
+.nf-page {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: crosshair;
+  z-index: 999;
+}
+
+.nf-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(240, 224, 64, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 224, 64, 0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.nf-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.nf-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  opacity: 0;
+  animation: nfScan 4s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes nfScan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.5;
+  }
+  95% {
+    opacity: 0.2;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.nf-ghost-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(14rem, 30vw, 22rem);
+  color: rgba(240, 224, 64, 0.025);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.nf-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+}
+
+.nf-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  animation: nfSlideLeft 0.7s ease both;
+}
+
+@keyframes nfSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nf-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gray-lt);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-transform: uppercase;
+}
+
+.nf-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: nfPulse 1.4s ease infinite;
+  flex-shrink: 0;
+}
+
+@keyframes nfPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.6);
+  }
+}
+
+.nf-code-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.2rem;
+  background: rgba(245, 242, 235, 0.03);
+  border: 1px solid rgba(245, 242, 235, 0.08);
+  border-left: 3px solid var(--red);
+}
+
+.nf-code-line {
+  display: flex;
+  gap: 1.2rem;
+  align-items: baseline;
+  font-family: var(--font-mono);
+}
+
+.nf-code-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: var(--gray-lt);
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.nf-code-value {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+}
+
+.nf-code-value--red {
+  color: var(--red);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ─── MAIN TITLE ─────────────────────────────── */
+.nf-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  line-height: 0.88;
+}
+
+.nf-title-outline {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  -webkit-text-stroke: 2px var(--white);
+  color: transparent;
+  letter-spacing: 0.01em;
+  animation: nfFadeUp 0.7s ease 0.1s both;
+}
+
+.nf-title-solid {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  color: var(--white);
+  letter-spacing: 0.01em;
+  animation: nfFadeUp 0.7s ease 0.2s both;
+}
+
+.nf-title-accent {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  color: var(--yellow);
+  letter-spacing: 0.01em;
+  animation: nfFadeUp 0.7s ease 0.3s both;
+}
+
+@keyframes nfFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── DESC ───────────────────────────────────── */
+.nf-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--gray-lt);
+  font-weight: 300;
+  margin: 0;
+  max-width: 400px;
+  animation: nfFadeUp 0.7s ease 0.4s both;
+}
+
+/* ─── ACTIONS ────────────────────────────────── */
+.nf-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  animation: nfFadeUp 0.7s ease 0.5s both;
+}
+
+.nf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.8rem;
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  cursor: crosshair;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.25s;
+}
+
+.nf-btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  transform: translateX(-101%);
+  transition: transform 0.25s ease;
+}
+
+.nf-btn-primary:hover::before {
+  transform: translateX(0);
+}
+.nf-btn-primary:hover {
+  color: var(--white);
+}
+.nf-btn-primary span {
+  position: relative;
+  z-index: 1;
+}
+
+.nf-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+  background: transparent;
+  color: var(--gray-lt);
+  border: 1px solid rgba(245, 242, 235, 0.15);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  cursor: crosshair;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.nf-btn-ghost:hover {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.nf-btn-ghost span {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── FOOTER TAG ─────────────────────────────── */
+.nf-footer-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  animation: nfFadeUp 0.7s ease 0.6s both;
+}
+
+.nf-tag {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: rgba(136, 136, 136, 0.3);
+  text-transform: uppercase;
+}
+
+.nf-tag:first-child {
+  color: rgba(240, 224, 64, 0.4);
+}
+
+.nf-tag-sep {
+  color: rgba(136, 136, 136, 0.2);
+  font-size: 0.6rem;
+}
+
+/* ══════════════════════════════════════════════
+   RIGHT — slot gambar
+══════════════════════════════════════════════ */
+.nf-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: nfSlideRight 0.7s ease 0.2s both;
+}
+
+@keyframes nfSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── IMAGE SLOT ─────────────────────────────── */
+.nf-image-slot {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── GAMBAR ─────────────────────────────────── */
+.nf-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(15%);
+  animation: nfFloat 4s ease infinite;
+}
+
+@keyframes nfFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* ─── PLACEHOLDER (sebelum gambar diisi) ─────── */
+.nf-placeholder {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed rgba(245, 242, 235, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(245, 242, 235, 0.02);
+  animation: nfFloat 4s ease infinite;
+}
+
+.nf-placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.2;
+}
+
+.nf-placeholder-text {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--gray-lt);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.nf-placeholder-code {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--yellow);
+  opacity: 0.5;
+  background: rgba(240, 224, 64, 0.05);
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(240, 224, 64, 0.1);
+}
+
+/* ─── CORNER BRACKETS ────────────────────────── */
+.nf-bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--yellow);
+  border-style: solid;
+  opacity: 0.5;
+}
+
+.nf-bracket--tl {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.nf-bracket--tr {
+  top: -1px;
+  right: -1px;
+  border-width: 2px 2px 0 0;
+}
+.nf-bracket--bl {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 2px 2px;
+}
+.nf-bracket--br {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .nf-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .nf-left {
+    align-items: center;
+    order: 2;
+  }
+
+  .nf-right {
+    order: 1;
+  }
+
+  .nf-eyebrow {
+    justify-content: center;
+  }
+
+  .nf-desc {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .nf-actions {
+    justify-content: center;
+  }
+
+  .nf-footer-tag {
+    justify-content: center;
+  }
+
+  .nf-image-slot {
+    max-width: 260px;
+  }
+
+  .nf-title {
+    align-items: center;
+  }
+
+  .nf-ghost-text {
+    font-size: clamp(8rem, 40vw, 14rem);
+  }
+}

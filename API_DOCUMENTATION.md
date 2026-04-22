@@ -704,7 +704,7 @@ image: file (optional, jpg/png/jpeg, max 5MB)
 
 **GET** `/api/v1/reservations/dashboard/user-summary`
 
-- **Access**: Protected (User)
+<!-- - **Access**: Protected (User) -->
 - **Response**:
   ```json
   {

@@ -49,6 +49,24 @@ const MyHistory = () => {
   const hasActiveReservations = activeAssets > 0;
   const mostRecentActive = reservations.find((r) => r.status === 'approved');
 
+  const handleRebook = async (oldReservationId) => {
+    localStorage.setItem('rebook_id', oldReservationId);
+    navigate('/dashboard/new_reservation');
+  };
+
+  const handleCancel = async (reservationId) => {
+    try {
+      const response = await axiosInstance.delete(
+        `${import.meta.env.PUBLIC_API_URL}/api/v1/reservations/${reservationId}/cancel`,
+      );
+      notyfSuccess(response.data.message);
+      getMyReservations();
+    } catch (error) {
+      console.error(error.response);
+      notyfError(error.response.data.message);
+    }
+  };
+
   return (
     <div className="history-log">
       {/* ===== HEADER COMPONENT ===== */}
@@ -277,6 +295,7 @@ const MyHistory = () => {
                             type="button"
                             className="btn btn--cancel"
                             aria-label="Cancel pending reservation"
+                            onClick={() => handleCancel(reservation.id)}
                           >
                             CANCEL
                           </button>
@@ -299,6 +318,7 @@ const MyHistory = () => {
                             href="#rebook"
                             className="btn btn--rebook"
                             aria-label="Re-book returned or rejected asset"
+                            onClick={() => handleRebook(reservation.id)}
                           >
                             RE-BOOK
                           </a>

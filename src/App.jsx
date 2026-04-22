@@ -15,6 +15,7 @@ import Reservations from './pages/Reservations/Reservations';
 import UserReservations from './pages/UserReservations/UserReservations';
 import Category from './pages/Category/Category';
 import MyHistory from './pages/MyHistory/MyHistory';
+import NotFound from './pages/NotFound/NotFound';
 const App = () => {
   return (
     <BrowserRouter>
@@ -56,6 +57,8 @@ const App = () => {
           {/* Kategori */}
           <Route path="/dashboard/category" element={<Category />} />
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
