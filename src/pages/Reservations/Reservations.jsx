@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import {
   ArrowBigLeftDash,
@@ -43,12 +43,27 @@ const Reservations = () => {
 
   const itemsPerPage = 10;
 
-  const totalPages = Math.ceil(reservations.length / itemsPerPage);
+  const { search } = useOutletContext() || { search: '' };
+  const q = search?.toLowerCase().trim() || '';
+
+  const filteredReservations = q
+    ? reservations.filter((r) => {
+        return (
+          r.user?.full_name?.toLowerCase().includes(q) ||
+          r.user?.username?.toLowerCase().includes(q) ||
+          r.asset?.name?.toLowerCase().includes(q) ||
+          r.asset?.sku?.toLowerCase().includes(q) ||
+          r.status?.toLowerCase().includes(q)
+        );
+      })
+    : reservations;
+
+  const totalPages = Math.ceil(filteredReservations.length / itemsPerPage);
 
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
 
-  const paginatedData = reservations.slice(firstIndex, lastIndex);
+  const paginatedData = filteredReservations.slice(firstIndex, lastIndex);
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('id-ID', {
@@ -152,7 +167,11 @@ const Reservations = () => {
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
-            Total <span>{pagination.totalItems || 0}</span> reservations found
+            Total{' '}
+            <span>
+              {filteredReservations.length || pagination.totalItems || 0}
+            </span>{' '}
+            reservations found
           </div>
         </div>
         <div className="table-scroll">

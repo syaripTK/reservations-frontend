@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import { getFullImageUrl } from '../../utils/getImageURL';
 import {
@@ -64,7 +64,24 @@ const Assets = () => {
   // })
 
   const totalPages = pagination.totalPages || 1;
-  const paginatedData = assets;
+
+  const { search } = useOutletContext() || { search: '' };
+  const q = search?.toLowerCase().trim() || '';
+
+  const filteredAssets = q
+    ? assets.filter((asset) => {
+        const cat = categories.find((c) => c.id === asset.category_id);
+        const catName = cat ? cat.name : '';
+        return (
+          asset.name?.toLowerCase().includes(q) ||
+          asset.sku?.toLowerCase().includes(q) ||
+          catName?.toLowerCase().includes(q) ||
+          asset.status?.toLowerCase().includes(q)
+        );
+      })
+    : assets;
+
+  const paginatedData = filteredAssets;
 
   const categoryName = (id) => {
     const category = categories.find((cat) => cat.id === id);
@@ -158,7 +175,7 @@ const Assets = () => {
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
-            Total <span>{assets.length || 0}</span> assets found
+            Total <span>{paginatedData.length || 0}</span> assets found
           </div>
         </div>
 

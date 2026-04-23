@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import {
+  notyfSuccess,
   showErrorNotification,
   showSuccessNotification,
 } from '../../utils/notyf';
@@ -21,7 +22,7 @@ const AddUsers = () => {
     setLoading(true);
     setErrors({});
     try {
-      await axiosInstance.post(
+      const response = await axiosInstance.post(
         `${import.meta.env.PUBLIC_API_URL}/api/v1/admin/users`,
         {
           username,
@@ -30,7 +31,7 @@ const AddUsers = () => {
           role,
         },
       );
-      showSuccessNotification('USER_DATA_ADDED_SUCCESSFULLY!');
+      notyfSuccess(response.data.message);
       navigate(-1);
     } catch (error) {
       console.error(error.response);

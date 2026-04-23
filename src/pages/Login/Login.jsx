@@ -34,7 +34,7 @@ const Login = () => {
       console.log(response);
       notyfSuccess(response.data.message);
       localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     } catch (error) {
       console.error(error.response);
       notyfError(error.response.data.message);

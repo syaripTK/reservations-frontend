@@ -17,47 +17,57 @@ import Category from './pages/Category/Category';
 import MyHistory from './pages/MyHistory/MyHistory';
 import NotFound from './pages/NotFound/NotFound';
 import AssetDetail from './pages/Assets/AssetDetail';
+import { ProtectedRoute, PublicRoute } from './utils/RouteGuard';
+import UserProfile from './pages/UserProfile/UserProfile';
+import LandingPig from './pages/Landing/LandingPig';
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route element={<PublicRoute />}>
+          <Route path="/" element={<LandingPig />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
 
-        <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route index element={<Dashboard />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<Dashboard />} />
 
-          {/* Reservations */}
-          <Route path="/dashboard/reservations" element={<Reservations />} />
+            {/* Reservations */}
+            <Route path="/dashboard/reservations" element={<Reservations />} />
 
-          {/* Assets */}
-          <Route path="/dashboard/assets" element={<Assets />} />
-          <Route path="/dashboard/assets/add" element={<AddAssets />} />
-          <Route path="/dashboard/assets/edit/:id" element={<EditAssets />} />
-          <Route path="/dashboard/assets/detail/:id" element={<AssetDetail />} />
+            {/* Assets */}
+            <Route path="/dashboard/assets" element={<Assets />} />
+            <Route path="/dashboard/assets/add" element={<AddAssets />} />
+            <Route path="/dashboard/assets/edit/:id" element={<EditAssets />} />
+            <Route
+              path="/dashboard/assets/detail/:id"
+              element={<AssetDetail />}
+            />
 
-          {/* Users */}
-          <Route path="/dashboard/users" element={<Users />} />
-          <Route path="/dashboard/users/add" element={<AddUsers />} />
-          <Route path="/dashboard/users/edit/:id" element={<EditUsers />} />
+            {/* Users */}
+            <Route path="/dashboard/users" element={<Users />} />
+            <Route path="/dashboard/users/add" element={<AddUsers />} />
+            <Route path="/dashboard/users/edit/:id" element={<EditUsers />} />
 
-          {/* Settings */}
-          <Route path="/dashboard/settings" element={<h1>Settings</h1>} />
+            {/* Settings */}
+            <Route path="/dashboard/settings" element={<h1>Settings</h1>} />
 
-          {/* New Reservations */}
-          <Route
-            path="/dashboard/new_reservation"
-            element={<UserReservations />}
-          />
+            {/* New Reservations */}
+            <Route
+              path="/dashboard/new_reservation"
+              element={<UserReservations />}
+            />
 
-          {/* History */}
-          <Route path="/dashboard/history" element={<MyHistory />} />
+            {/* History */}
+            <Route path="/dashboard/history" element={<MyHistory />} />
 
-          {/* Profile */}
-          <Route path="/dashboard/profile" element={<h1>Profile</h1>} />
+            {/* Profile */}
+            <Route path="/dashboard/profile" element={<UserProfile />} />
 
-          {/* Kategori */}
-          <Route path="/dashboard/category" element={<Category />} />
+            {/* Kategori */}
+            <Route path="/dashboard/category" element={<Category />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFound />} />

@@ -17,7 +17,7 @@ const Sidebar = () => {
     { to: '/dashboard/assets', label: 'Assets' },
     { to: '/dashboard/category', label: 'Category' },
     { to: '/dashboard/users', label: 'Users' },
-    { to: '/dashboard/settings', label: 'Settings' },
+    { to: '/dashboard/profile', label: 'Profile' },
   ];
 
   const menuUser = [

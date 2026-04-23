@@ -10,7 +10,7 @@ const MyNavbar = ({ search, setSearch }) => {
   const handleLogout = () => {
     try {
       localStorage.clear();
-      navigate('/login');
+      navigate('/login', { replace: true });
     } catch (error) {
       error.response;
     }
@@ -22,6 +22,7 @@ const MyNavbar = ({ search, setSearch }) => {
         <input
           type="text"
           className="nav-search"
+          placeholder="Say I can law and"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

@@ -1,5 +1,6 @@
 import { Folder } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import './Category.css';
@@ -17,6 +18,7 @@ const Category = () => {
   const [namaKategori, setNamaKategori] = useState('');
   const [deskripsi, setDeskripsi] = useState('');
   const [loading, setLoading] = useState(false);
+  const { search } = useOutletContext() || { search: '' };
   const initialState = {
     namaKategori: '',
     deskripsi: '',
@@ -130,34 +132,48 @@ const Category = () => {
       </div>
       <div className="category-cards-wrapper">
         <div className="category-cards-grid">
-          {categories &&
-            categories.map((cat) => (
-              <div key={cat.id} className="category-card-item">
-                <div className="category-card-content">
-                  <div className="category-card-icon">
-                    <Folder />
+          {(() => {
+            const q = search?.toLowerCase().trim() || '';
+            const filtered = q
+              ? categories.filter((cat) => {
+                  return (
+                    cat.name?.toLowerCase().includes(q) ||
+                    (cat.description || '').toLowerCase().includes(q)
+                  );
+                })
+              : categories;
+
+            return (
+              filtered &&
+              filtered.map((cat) => (
+                <div key={cat.id} className="category-card-item">
+                  <div className="category-card-content">
+                    <div className="category-card-icon">
+                      <Folder />
+                    </div>
+                    <h3 className="category-card-title">{cat.name}</h3>
+                    <p className="category-card-description">
+                      {cat.description != null ? cat.description : '-'}
+                    </p>
                   </div>
-                  <h3 className="category-card-title">{cat.name}</h3>
-                  <p className="category-card-description">
-                    {cat.description != null ? cat.description : '-'}
-                  </p>
+                  <div className="category-card-actions">
+                    <button
+                      className="category-card-edit-btn"
+                      onClick={() => handleEditCategory(cat, getCategories)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="category-card-delete-btn"
+                      onClick={() => handleDeleteCategory(cat.id)}
+                    >
+                      DELETE
+                    </button>
+                  </div>
                 </div>
-                <div className="category-card-actions">
-                  <button
-                    className="category-card-edit-btn"
-                    onClick={() => handleEditCategory(cat, getCategories)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="category-card-delete-btn"
-                    onClick={() => handleDeleteCategory(cat.id)}
-                  >
-                    DELETE
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))
+            );
+          })()}
         </div>
       </div>
 

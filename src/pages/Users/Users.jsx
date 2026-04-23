@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 
 import ReactDOMServer from 'react-dom/server';
 
@@ -56,7 +56,21 @@ const Users = () => {
   }
 
   const totalPages = pagination.totalPages || 1;
-  const paginatedData = users;
+
+  const { search } = useOutletContext() || { search: '' };
+  const q = search?.toLowerCase().trim() || '';
+
+  const filteredUsers = q
+    ? users.filter((u) => {
+        return (
+          u.username?.toLowerCase().includes(q) ||
+          u.full_name?.toLowerCase().includes(q) ||
+          u.role?.toLowerCase().includes(q)
+        );
+      })
+    : users;
+
+  const paginatedData = filteredUsers;
 
   const confirmDelete = async (id) => {
     setLoading(true);
@@ -131,7 +145,9 @@ const Users = () => {
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
-            Total <span>{pagination.totalItems || 0}</span> users found
+            Total{' '}
+            <span>{paginatedData.length || pagination.totalItems || 0}</span>{' '}
+            users found
           </div>
         </div>
 

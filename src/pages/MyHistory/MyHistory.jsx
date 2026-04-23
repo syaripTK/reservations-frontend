@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import './MyHistory.css';
 import { notyfError, notyfSuccess } from '../../utils/notyf';
@@ -38,6 +38,19 @@ const MyHistory = () => {
       notyfError(error.response.data.message);
     }
   };
+
+  const { search } = useOutletContext() || { search: '' };
+  const q = search?.toLowerCase().trim() || '';
+
+  const filteredReservations = q
+    ? reservations.filter((r) => {
+        return (
+          r.asset?.name?.toLowerCase().includes(q) ||
+          r.asset?.sku?.toLowerCase().includes(q) ||
+          r.status?.toLowerCase().includes(q)
+        );
+      })
+    : reservations;
 
   const totalReservations = reservations.length;
   const activeAssets = reservations.filter(
@@ -235,7 +248,7 @@ const MyHistory = () => {
               </thead>
 
               <tbody className="history-log__table-body">
-                {reservations.map((reservation, index) => (
+                {filteredReservations.map((reservation, index) => (
                   <tr
                     key={reservation.id}
                     className="table__row"
