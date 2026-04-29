@@ -124,7 +124,7 @@ const EditUsers = () => {
               )}
             </div>
           </div>
-          {/* GRID 2 */}
+          {}
           <div className="form-grid-column">
             <div className="form-grid-column">
               <div className="form-group">

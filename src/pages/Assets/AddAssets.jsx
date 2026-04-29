@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Assets.css';
 import { ArrowBigLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from '../../utils/axiosInstance';
 import Swal from 'sweetalert2';
+import axiosInstance from '../../utils/axiosInstance';
 import {
   notyfSuccess,
   showErrorNotification,
@@ -128,7 +128,7 @@ const AddAssets = () => {
               </select>
             </div>
           </div>
-          {/* GRID 2 */}
+          {}
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="location" className="form-label">

@@ -75,7 +75,7 @@
 }
 
 .btn-add::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--red);
@@ -114,7 +114,7 @@
 }
 
 .assets-stat::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -237,18 +237,18 @@
 }
 
 .table-assets thead th.sortable::after {
-  content: ' ↕';
+  content: " ↕";
   opacity: 0.3;
   font-size: 0.55rem;
 }
 
 .table-assets thead th.sorted-asc::after {
-  content: ' ↑';
+  content: " ↑";
   opacity: 0.8;
   color: var(--yellow);
 }
 .table-assets thead th.sorted-desc::after {
-  content: ' ↓';
+  content: " ↓";
   opacity: 0.8;
   color: var(--yellow);
 }
@@ -262,18 +262,6 @@
 .table-assets tbody tr:hover {
   background: rgba(245, 242, 235, 0.03);
 }
-
-/* .table-assets tbody tr::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--yellow);
-  transform: scaleY(0);
-  transition: transform 0.2s ease;
-} */
 
 .swal-dark-popup {
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -562,8 +550,6 @@
   }
 }
 
-/* ==================== ADD ASSETS FORM ==================== */
-
 .add-assets-container {
   display: flex;
   flex-direction: column;
@@ -698,7 +684,7 @@
 }
 
 .preview-frame::before {
-  content: 'PREVIEW';
+  content: "PREVIEW";
   position: absolute;
   top: 5px;
   left: 8px;
@@ -834,8 +820,6 @@
   box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
 }
 
-/* ==================== EDIT ASSETS FORM ==================== */
-
 .edit-assets-container {
   display: flex;
   flex-direction: column;
@@ -884,8 +868,6 @@
   color: var(--gray-lt);
   letter-spacing: 0.1em;
 }
-
-/* ==================== RESPONSIVE ==================== */
 
 @media (max-width: 1024px) {
   .form-grid-container {

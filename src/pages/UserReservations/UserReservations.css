@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap");
 
-/* ─── VARIABLES ──────────────────────────────── */
 :root {
   --black: #0a0a0a;
   --white: #f5f2eb;
@@ -9,9 +8,9 @@
   --gray: #1a1a1a;
   --gray-mid: #2e2e2e;
   --gray-lt: #888888;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-body: 'Manrope', sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-body: "Manrope", sans-serif;
 
   --available: #4ade80;
   --available-bg: rgba(74, 222, 128, 0.07);
@@ -21,9 +20,6 @@
   --maintenance-bg: rgba(230, 48, 48, 0.07);
 }
 
-/* ══════════════════════════════════════════════
-   PAGE WRAPPER
-══════════════════════════════════════════════ */
 .reservations-wrapper {
   display: flex;
   flex-direction: column;
@@ -34,9 +30,6 @@
   box-sizing: border-box;
 }
 
-/* ══════════════════════════════════════════════
-   HEADER
-══════════════════════════════════════════════ */
 .reservations-header {
   padding-bottom: 1.4rem;
   border-bottom: 1px solid rgba(245, 242, 235, 0.08);
@@ -66,9 +59,6 @@
   color: transparent;
 }
 
-/* ══════════════════════════════════════════════
-   FORM
-══════════════════════════════════════════════ */
 .reservatiomn-content {
   background: var(--gray);
   border: 1px solid rgba(245, 242, 235, 0.08);
@@ -80,7 +70,7 @@
 }
 
 .reservatiomn-content::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image:
@@ -116,7 +106,7 @@
 }
 
 .form-grouped select,
-.form-grouped input[type='date'],
+.form-grouped input[type="date"],
 .input-start-date,
 .input-end-date {
   width: 100%;
@@ -159,7 +149,7 @@
   background: #0f0f0f;
 }
 
-input[type='date']::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(0.5);
   cursor: pointer;
 }
@@ -191,7 +181,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .btn-add::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--red);
@@ -231,9 +221,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   color: var(--white);
 }
 
-/* ══════════════════════════════════════════════
-   RESERVATION FOOTER
-══════════════════════════════════════════════ */
 .reservation-footer {
   display: flex;
   flex-direction: column;
@@ -393,9 +380,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   border-color: rgba(245, 242, 235, 0.22);
 }
 
-/* status bar atas */
 .card-asset::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -414,7 +400,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background: var(--maintenance);
 }
 
-/* ─── IMAGE ──────────────────────────────────── */
 .card-asset-header {
   width: 100%;
   height: 110px;
@@ -439,7 +424,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   filter: grayscale(0%);
 }
 
-/* ─── BODY ───────────────────────────────────── */
 .card-asset-body {
   padding: 0.8rem 0.8rem 0.4rem;
   display: flex;
@@ -448,7 +432,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   flex: 1;
 }
 
-/* ─── BADGE ──────────────────────────────────── */
 .card-badge {
   display: inline-flex;
   align-items: center;
@@ -464,7 +447,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .card-badge::before {
-  content: '';
+  content: "";
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -496,7 +479,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background: var(--maintenance-bg);
 }
 
-/* ─── NAME ───────────────────────────────────── */
 .asset-name {
   font-family: var(--font-body);
   font-size: 0.82rem;
@@ -517,7 +499,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   font-weight: 400;
 }
 
-/* ─── DESC ───────────────────────────────────── */
 .asset-desc {
   font-size: 0.7rem;
   color: var(--gray-lt);
@@ -529,7 +510,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   overflow: hidden;
 }
 
-/* ─── CARD FOOTER ────────────────────────────── */
 .card-footer {
   padding: 0.55rem 0.8rem 0.7rem;
   border-top: 1px solid rgba(245, 242, 235, 0.06);
@@ -592,9 +572,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background: rgba(240, 224, 64, 0.04);
 }
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .new-reservation {
     flex-direction: column;

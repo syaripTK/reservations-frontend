@@ -1,16 +1,15 @@
 import { Folder } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import './Category.css';
+import Swal from 'sweetalert2';
 import {
   notyfError,
   notyfSuccess,
   showErrorNotification,
   showSuccessNotification,
 } from '../../utils/notyf';
-import Swal from 'sweetalert2';
 
 const Category = () => {
   const navigate = useNavigate();
@@ -65,7 +64,7 @@ const Category = () => {
 
   const handleEditCategory = async (category, refreshData) => {
     const { value: formValues } = await Swal.fire({
-      title: `<div class="swal-brutalist-title">EDIT // CATEGORY</div>`,
+      title: `<div class="swal-brutalist-title">EDIT 
       html: `
       <div class="swal-brutalist-body">
         <div class="input-group">
@@ -84,11 +83,10 @@ const Category = () => {
       confirmButtonText: 'SAVE',
       cancelButtonText: 'CANCEL',
       buttonsStyling: false,
-      customClass: {
+      customClass: 
         popup: 'swal-brutalist-popup',
         confirmButton: 'swal-btn-confirm',
-        cancelButton: 'swal-btn-cancel',
-      },
+        cancelButton: 'swal-btn-cancel',,
       preConfirm: () => {
         const name = document.getElementById('swal-cat-name').value;
         const description = document.getElementById('swal-cat-desc').value;

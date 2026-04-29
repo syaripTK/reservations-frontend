@@ -1,9 +1,10 @@
 import { jwtDecode } from 'jwt-decode';
 import { NavLink } from 'react-router-dom';
 import './SideBar.css';
-import UserAvatar from '../../utils/useAvatar';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../utils/axiosInstance';
+import UserAvatar from '../../utils/useAvatar';
+
 const Sidebar = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(false);

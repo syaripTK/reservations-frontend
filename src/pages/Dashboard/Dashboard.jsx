@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import axiosInstance from '../../utils/axiosInstance';
-import UserDashboard from '../../component/DashboardUser/UserDashboard';
+import React, { useEffect, useState } from 'react';
 import AdminDashboard from '../../component/AdminDashboard/AdminDashboard';
+import UserDashboard from '../../component/DashboardUser/UserDashboard';
+import axiosInstance from '../../utils/axiosInstance';
 
 const Dashboard = () => {
   const [statsData, setStatsData] = useState({

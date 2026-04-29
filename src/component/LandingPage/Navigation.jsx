@@ -19,7 +19,7 @@ const Navigation = () => {
     <nav className={`nav ${scrollY > 60 ? 'nav--scrolled' : ''}`}>
       <div className="nav-logo">
         <span className="nav-logo-bracket">
-          [<span className='brand'>ASSETFLOW</span>]
+          [<span className="brand">ASSETFLOW</span>]
         </span>
       </div>
       <div className="nav-links">

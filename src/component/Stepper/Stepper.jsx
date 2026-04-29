@@ -1,6 +1,5 @@
-import React from 'react';
-// import './Stepper.css';
 import { CircleCheckBig } from 'lucide-react';
+import React from 'react';
 
 const Stepper = ({ currentStep }) => {
   const steps = ['Informasi', 'Pembayaran', 'Selesai'];

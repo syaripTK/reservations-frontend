@@ -38,9 +38,7 @@ function HowItWorks() {
   return (
     <section className="section section--dark" id="cara-kerja">
       <div className="section-header">
-        <div className="section-label" style={{ color: '#f0e040' }}>
-          // CARA KERJA
-        </div>
+        <div className="section-label" style={{ color: '#f0e040' }}></div>
         <h2 className="section-title" style={{ color: '#fff' }}>
           4 LANGKAH.
           <br />

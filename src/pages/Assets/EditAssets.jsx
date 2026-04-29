@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Assets.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -86,7 +86,7 @@ const EditAssets = () => {
           ...prev,
           image_url: file,
         }));
-        // Preview image
+
         const reader = new FileReader();
         reader.onloadend = () => {
           setPreview(reader.result);
@@ -165,7 +165,7 @@ const EditAssets = () => {
 
       <form className="edit-assets-form" onSubmit={handleSubmit}>
         <div className="form-grid-container">
-          {/* Grid Column 1 */}
+          {}
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="assetName" className="form-label">
@@ -206,7 +206,7 @@ const EditAssets = () => {
             </div>
           </div>
 
-          {/* Grid Column 2 */}
+          {}
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="sku" className="form-label">
@@ -240,42 +240,7 @@ const EditAssets = () => {
                 <option value="maintenance">Maintenance</option>
               </select>
             </div>
-            {/* 
-            <div className="form-group">
-              <label className="form-label">Upload Gambar Aset</label>
-              <div className="custom-file-upload">
-                <label htmlFor="imageUrl" className="file-upload-label">
-                  <span>PILIH FILE</span>
-                </label>
-                <input
-                  type="file"
-                  id="imageUrl"
-                  name="image_url"
-                  accept="image/*"
-                  onChange={handleChange}
-                />
-                <div className="preview-frame">
-                  {preview && (
-                    <img
-                      className="preview-image"
-                      src={preview}
-                      alt="image-preview"
-                      width={220}
-                    />
-                  )}
-                  {!preview &&
-                    asset.image_url &&
-                    typeof asset.image_url === 'string' && (
-                      <img
-                        className="preview-image"
-                        src={getFullImageUrl(asset.image_url)}
-                        alt="current-image"
-                        width={220}
-                      />
-                    )}
-                </div>
-              </div>
-            </div> */}
+            {}
           </div>
         </div>
 

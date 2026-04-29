@@ -211,7 +211,7 @@
 }
 
 .btn-main::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--red);
@@ -421,7 +421,7 @@
 }
 
 .asset-card::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;

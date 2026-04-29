@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useOutletContext } from 'react-router-dom';
-
 import ReactDOMServer from 'react-dom/server';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 
 import './Users.css';
 import {
@@ -12,8 +11,8 @@ import {
   Trash2,
 } from 'lucide-react';
 import Swal from 'sweetalert2';
-import { notyfSuccess } from '../../utils/notyf';
 import axiosInstance from '../../utils/axiosInstance';
+import { notyfSuccess } from '../../utils/notyf';
 
 const Users = () => {
   const navigate = useNavigate();
@@ -123,7 +122,7 @@ const Users = () => {
 
   return (
     <div className="assets-wrapper">
-      {/* HEADER */}
+      {}
       <div className="assets-header">
         <div className="assets-header-left">
           <div className="assets-label"># MANAGE_USERS</div>
@@ -141,7 +140,7 @@ const Users = () => {
         </div>
       </div>
 
-      {/* TABLE */}
+      {}
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
@@ -200,7 +199,7 @@ const Users = () => {
           </table>
         </div>
 
-        {/* PAGINATION */}
+        {}
         <div className="pagination">
           <div className="pagination-info">
             Halaman <span>{currentPage}</span> of <span>{totalPages}</span>

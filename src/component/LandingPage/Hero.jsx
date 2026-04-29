@@ -63,7 +63,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* floating tag */}
+      {}
       <div className="hero-tag hero-tag--1">⚡ LIVE</div>
       <div className="hero-tag hero-tag--2">v2.4.1</div>
     </section>

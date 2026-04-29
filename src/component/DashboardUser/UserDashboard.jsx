@@ -1,14 +1,14 @@
-import React from 'react';
 import {
-  Chart as ChartJS,
   ArcElement,
-  Tooltip,
-  Legend,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  Tooltip,
 } from 'chart.js';
-import { Doughnut, Bar } from 'react-chartjs-2';
+import React from 'react';
+import { Bar, Doughnut } from 'react-chartjs-2';
 import './UserDashboard.css';
 
 ChartJS.register(
@@ -66,18 +66,32 @@ const UserDashboard = ({ statsData, summaryData }) => {
 
   return (
     <div className="ud-wrapper">
-
       <div className="ud-stats-grid">
-        <StatCard label="TOTAL_RESERVATIONS"  value={summaryData.totalReservations}    color="white" />
-        <StatCard label="PENDING"    value={summaryData.pendingReservations}   color="yellow" />
-        <StatCard label="APPROVED"   value={summaryData.approvedReservations}  color="green" />
-        <StatCard label="REJECTED"   value={summaryData.rejectedReservations}  color="red" />
+        <StatCard
+          label="TOTAL_RESERVATIONS"
+          value={summaryData.totalReservations}
+          color="white"
+        />
+        <StatCard
+          label="PENDING"
+          value={summaryData.pendingReservations}
+          color="yellow"
+        />
+        <StatCard
+          label="APPROVED"
+          value={summaryData.approvedReservations}
+          color="green"
+        />
+        <StatCard
+          label="REJECTED"
+          value={summaryData.rejectedReservations}
+          color="red"
+        />
       </div>
 
-      {/* ── MAIN GRID ── */}
+      {}
       <div className="ud-main-grid">
-
-        {/* Doughnut Chart */}
+        {}
         <div className="ud-card">
           <h3 className="ud-card-title">STATUS_DISTRIBUTION</h3>
           <div className="ud-chart-wrap">
@@ -85,9 +99,11 @@ const UserDashboard = ({ statsData, summaryData }) => {
           </div>
         </div>
 
-        {/* Active Reservations */}
+        {}
         <div className="ud-card">
-          <h3 className="ud-card-title ud-card-title--green">ACTIVE_RESERVATIONS</h3>
+          <h3 className="ud-card-title ud-card-title--green">
+            ACTIVE_RESERVATIONS
+          </h3>
           <div className="ud-list">
             {summaryData.activeReservations.length > 0 ? (
               summaryData.activeReservations.map((item) => (
@@ -104,10 +120,9 @@ const UserDashboard = ({ statsData, summaryData }) => {
             )}
           </div>
         </div>
-
       </div>
 
-      {/* ── ACTIVITY LOG TABLE ── */}
+      {}
       <div className="ud-card ud-card--full">
         <h3 className="ud-card-title">RECENT_ACTIVITY_LOG</h3>
         <div className="ud-table-wrap">
@@ -131,7 +146,9 @@ const UserDashboard = ({ statsData, summaryData }) => {
                     {new Date(res.end_date).toLocaleDateString()}
                   </td>
                   <td className="ud-td">
-                    <span className={`ud-status-badge ud-status-badge--${res.status}`}>
+                    <span
+                      className={`ud-status-badge ud-status-badge--${res.status}`}
+                    >
                       {res.status.toUpperCase()}
                     </span>
                   </td>
@@ -141,12 +158,10 @@ const UserDashboard = ({ statsData, summaryData }) => {
           </table>
         </div>
       </div>
-
     </div>
   );
 };
 
-/* ── STAT CARD ── */
 const StatCard = ({ label, value, color }) => (
   <div className={`ud-stat-card ud-stat-card--${color}`}>
     <span className="ud-stat-label">{label}</span>
@@ -154,13 +169,16 @@ const StatCard = ({ label, value, color }) => (
   </div>
 );
 
-/* ── STATUS COLOR (logic tetap) ── */
 const getStatusColor = (status) => {
   switch (status) {
-    case 'approved': return '#4ade80';
-    case 'rejected': return '#e63030';
-    case 'pending':  return '#f0e040';
-    default:         return '#f5f2eb';
+    case 'approved':
+      return '#4ade80';
+    case 'rejected':
+      return '#e63030';
+    case 'pending':
+      return '#f0e040';
+    default:
+      return '#f5f2eb';
   }
 };
 

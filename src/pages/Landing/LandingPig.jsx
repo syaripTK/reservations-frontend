@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
+import { useEffect, useRef, useState } from 'react';
 import './LandingPig.css';
 import { useNavigate } from 'react-router-dom';
 import { notyfError } from '../../utils/notyf';
@@ -453,7 +453,7 @@ export default function LandingPig() {
           </div>
         </div>
 
-        {/* Stats row */}
+        {}
         <div ref={statsRef} className="lp-hero-stats">
           {STATS.map((s, i) => (
             <div key={i} className="lp-stat-card">
@@ -464,7 +464,7 @@ export default function LandingPig() {
         </div>
       </section>
 
-      {/* ══ TICKER ══ */}
+      {}
       <div className="lp-ticker">
         <div className="lp-ticker-track" ref={tickerRef}>
           {[...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS].map(
@@ -477,7 +477,7 @@ export default function LandingPig() {
         </div>
       </div>
 
-      {/* ══ ASSETS ══ */}
+      {}
       <section ref={assetsRef} className="lp-section" id="assets">
         <div className="lp-section-header">
           <div className="lp-section-label">// KATALOG ASET</div>
@@ -512,23 +512,21 @@ export default function LandingPig() {
                 />
               </div>
               <button className="lp-asset-cta">RESERVASI →</button>
-              {/* hover reveal shine */}
+              {}
               <div className="lp-card-shine" />
             </div>
           ))}
         </div>
       </section>
 
-      {/* ══ STEPS ══ */}
+      {}
       <section
         ref={stepsRef}
         className="lp-section lp-section--dark"
         id="steps"
       >
         <div className="lp-section-header">
-          <div className="lp-section-label" style={{ color: '#f0e040' }}>
-            // CARA KERJA
-          </div>
+          <div className="lp-section-label" style={{ color: '#f0e040' }}></div>
           <SplitTitle
             text="4 LANGKAH."
             className="lp-section-title"
@@ -553,7 +551,7 @@ export default function LandingPig() {
         </div>
       </section>
 
-      {/* ══ CTA ══ */}
+      {}
       <section ref={ctaRef} className="lp-cta" id="cta">
         <div className="lp-cta-inner">
           <div className="lp-cta-label">SIAP MULAI?</div>
@@ -581,7 +579,7 @@ export default function LandingPig() {
         <div className="lp-cta-deco">ASSETFLOW</div>
       </section>
 
-      {/* ══ FOOTER ══ */}
+      {}
       <footer className="lp-footer">
         <div className="lp-footer-logo">
           <span className="lp-bracket-red">[</span>ASSETFLOW

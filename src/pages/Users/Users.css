@@ -10,7 +10,7 @@
 }
 
 .role-admin {
-  background-color: var(--yellow); 
+  background-color: var(--yellow);
   color: #000;
   box-shadow: 4px 4px 0px rgba(144, 122, 33, 0.2);
   border: 1px solid var(--yellow);

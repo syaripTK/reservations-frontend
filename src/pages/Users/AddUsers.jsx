@@ -84,7 +84,7 @@ const AddUsers = () => {
               />
             </div>
           </div>
-          {/* GRID 2 */}
+          {}
           <div className="form-grid-column">
             <div className="form-group">
               <label htmlFor="password" className="form-label">

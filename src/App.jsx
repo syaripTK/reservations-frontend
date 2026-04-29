@@ -1,25 +1,26 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Login from './pages/Login/Login';
-import Home from './pages/Home/Home';
-import Dashboard from './pages/Dashboard/Dashboard';
-import LandingPage from './pages/LandingPage/LandingPage';
-import DashboardLayout from './pages/DashboardLayout/DashboardLayout';
-import Assets from './pages/Assets/Assets';
 import AddAssets from './pages/Assets/AddAssets';
+import AssetDetail from './pages/Assets/AssetDetail';
+import Assets from './pages/Assets/Assets';
 import EditAssets from './pages/Assets/EditAssets';
-import Users from './pages/Users/Users';
-import AddUsers from './pages/Users/AddUsers';
-import EditUsers from './pages/Users/EditUsers';
-import Reservations from './pages/Reservations/Reservations';
-import UserReservations from './pages/UserReservations/UserReservations';
 import Category from './pages/Category/Category';
+import Dashboard from './pages/Dashboard/Dashboard';
+import DashboardLayout from './pages/DashboardLayout/DashboardLayout';
+import Home from './pages/Home/Home';
+import LandingPig from './pages/Landing/LandingPig';
+import LandingPage from './pages/LandingPage/LandingPage';
+import Login from './pages/Login/Login';
 import MyHistory from './pages/MyHistory/MyHistory';
 import NotFound from './pages/NotFound/NotFound';
-import AssetDetail from './pages/Assets/AssetDetail';
-import { ProtectedRoute, PublicRoute } from './utils/RouteGuard';
+import Reservations from './pages/Reservations/Reservations';
 import UserProfile from './pages/UserProfile/UserProfile';
-import LandingPig from './pages/Landing/LandingPig';
+import UserReservations from './pages/UserReservations/UserReservations';
+import AddUsers from './pages/Users/AddUsers';
+import EditUsers from './pages/Users/EditUsers';
+import Users from './pages/Users/Users';
+import { ProtectedRoute, PublicRoute } from './utils/RouteGuard';
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -33,10 +34,10 @@ const App = () => {
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
 
-            {/* Reservations */}
+            {}
             <Route path="/dashboard/reservations" element={<Reservations />} />
 
-            {/* Assets */}
+            {}
             <Route path="/dashboard/assets" element={<Assets />} />
             <Route path="/dashboard/assets/add" element={<AddAssets />} />
             <Route path="/dashboard/assets/edit/:id" element={<EditAssets />} />
@@ -45,27 +46,27 @@ const App = () => {
               element={<AssetDetail />}
             />
 
-            {/* Users */}
+            {}
             <Route path="/dashboard/users" element={<Users />} />
             <Route path="/dashboard/users/add" element={<AddUsers />} />
             <Route path="/dashboard/users/edit/:id" element={<EditUsers />} />
 
-            {/* Settings */}
+            {}
             <Route path="/dashboard/settings" element={<h1>Settings</h1>} />
 
-            {/* New Reservations */}
+            {}
             <Route
               path="/dashboard/new_reservation"
               element={<UserReservations />}
             />
 
-            {/* History */}
+            {}
             <Route path="/dashboard/history" element={<MyHistory />} />
 
-            {/* Profile */}
+            {}
             <Route path="/dashboard/profile" element={<UserProfile />} />
 
-            {/* Kategori */}
+            {}
             <Route path="/dashboard/category" element={<Category />} />
           </Route>
         </Route>

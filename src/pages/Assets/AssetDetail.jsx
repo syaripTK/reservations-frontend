@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import {
-  ChevronLeft,
-  Share2,
-  Heart,
-  MapPin,
-  Calendar,
-  User,
   AlertCircle,
+  Calendar,
+  ChevronLeft,
+  Heart,
   Loader,
+  MapPin,
+  Share2,
+  User,
 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import { getFullImageUrl } from '../../utils/getImageURL';
 import './AssetDetail.css';
@@ -127,7 +127,7 @@ const AssetDetail = () => {
 
   return (
     <article className="asset-detail-wrapper">
-      {/* Header Navigation */}
+      {}
       <header className="asset-detail-header">
         <button
           className="asset-detail-back-button"
@@ -163,7 +163,7 @@ const AssetDetail = () => {
       </header>
 
       <div className="asset-detail-content">
-        {/* Gallery Section */}
+        {}
         <section
           className="asset-detail-gallery-section"
           aria-label="Galeri gambar asset"

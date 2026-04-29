@@ -1,6 +1,6 @@
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
-import { useOutletContext, useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import './UserReservations.css';
 import axiosInstance from '../../utils/axiosInstance';
 import { getFullImageUrl } from '../../utils/getImageURL';
@@ -12,7 +12,7 @@ import {
 const UserReservations = () => {
   const navigate = useNavigate();
   const scrollRef = useRef(null);
-  const [assetId, setAssetId] = useState(''); // Gunakan string kosong untuk select default
+  const [assetId, setAssetId] = useState('');
   const [assets, setAssets] = useState([]);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -24,9 +24,7 @@ const UserReservations = () => {
         startRef.current.focus();
         if (typeof startRef.current.showPicker === 'function')
           startRef.current.showPicker();
-      } catch (e) {
-        /* ignore */
-      }
+      } catch (e) {}
     }
   };
   const handleEndFocus = () => {
@@ -35,15 +33,12 @@ const UserReservations = () => {
         endRef.current.focus();
         if (typeof endRef.current.showPicker === 'function')
           endRef.current.showPicker();
-      } catch (e) {
-        /* ignore */
-      }
+      } catch (e) {}
     }
   };
   const [loading, setLoading] = useState(false);
   const { search } = useOutletContext() || { search: '' };
 
-  // --- LOGIKA FILTER (Didefinisikan di atas agar bisa dipakai di mana saja) ---
   const filteredAssets = assets.filter((asset) => {
     const q = search?.toLowerCase().trim() || '';
     if (!q) return true;
@@ -66,7 +61,7 @@ const UserReservations = () => {
 
     if (resId) {
       console.info('RECOVERING_REBOOK_ID', resId);
-      setAssetId(resId); // Langsung set assetId jika datang dari detail
+      setAssetId(resId);
       localStorage.removeItem('res_id');
     }
 

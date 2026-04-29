@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap");
 
 :root {
   --black: #0a0a0a;
@@ -8,9 +8,9 @@
   --gray: #1a1a1a;
   --gray-mid: #2e2e2e;
   --gray-lt: #888;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-body: 'Manrope', sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-body: "Manrope", sans-serif;
   --sidebar-w: 240px;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .Sidebar::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image:
@@ -41,7 +41,7 @@
 }
 
 .Sidebar::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -158,7 +158,7 @@
 }
 
 .menu.active::after {
-  content: '◆';
+  content: "◆";
   position: absolute;
   right: 1.2rem;
   font-size: 0.45rem;
@@ -267,20 +267,3 @@
   pointer-events: none;
   z-index: 2;
 }
-
-/* @keyframes sidebarScan {
-  0% {
-    top: 0%;
-    opacity: 0;
-  }
-  5% {
-    opacity: 0.4;
-  }
-  95% {
-    opacity: 0.2;
-  }
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
-} */

@@ -1,7 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useOutletContext } from 'react-router-dom';
-import axiosInstance from '../../utils/axiosInstance';
-import { getFullImageUrl } from '../../utils/getImageURL';
 import {
   AlertTriangle,
   ArrowBigLeft,
@@ -9,11 +5,15 @@ import {
   SquarePen,
   Trash2,
 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import axiosInstance from '../../utils/axiosInstance';
+import { getFullImageUrl } from '../../utils/getImageURL';
 import './Assets.css';
 import Swal from 'sweetalert2';
-import { notyfSuccess } from '../../utils/notyf';
 import AssetCatalog from '../../component/LandingPage/AssetCatalog';
+import { notyfSuccess } from '../../utils/notyf';
 
 const Assets = () => {
   const navigate = useNavigate();
@@ -58,10 +58,6 @@ const Assets = () => {
       console.error(error.response);
     }
   };
-
-  // const filterData = assets.filter((asset) => {
-  //   return asset.name?.toLowerCase().includes(search.toLowerCase())
-  // })
 
   const totalPages = pagination.totalPages || 1;
 
@@ -153,7 +149,7 @@ const Assets = () => {
 
   return (
     <div className="assets-wrapper">
-      {/* HEADER */}
+      {}
       <div className="assets-header">
         <div className="assets-header-left">
           <div className="assets-label"># ASSET MANAGEMENT</div>
@@ -171,7 +167,7 @@ const Assets = () => {
         </div>
       </div>
 
-      {/* TABLE */}
+      {}
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
@@ -233,7 +229,7 @@ const Assets = () => {
           </table>
         </div>
 
-        {/* PAGINATION */}
+        {}
         <div className="pagination">
           <div className="pagination-info">
             Halaman <span>{currentPage}</span> of <span>{totalPages}</span>

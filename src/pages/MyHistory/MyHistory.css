@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap");
 
 :root {
   --black: #0a0a0a;
@@ -8,9 +8,9 @@
   --gray: #1a1a1a;
   --gray-mid: #2e2e2e;
   --gray-lt: #888888;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-body: 'Manrope', sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-body: "Manrope", sans-serif;
 
   --s-approved: #4ade80;
   --s-pending: #f0e040;
@@ -62,7 +62,7 @@
 }
 
 .history-log__header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -98,10 +98,6 @@
   color: transparent;
 }
 
-/* ══════════════════════════════════════════════
-   STATS GRID — variasi: layout asimetris
-   kartu pertama lebih besar (featured)
-══════════════════════════════════════════════ */
 .history-log__stats {
   width: 100%;
 }
@@ -114,7 +110,6 @@
   border: 1px solid rgba(245, 242, 235, 0.07);
 }
 
-/* ─── METRIC CARD ────────────────────────────── */
 .metric-card {
   background: var(--gray);
   padding: 1.6rem 1.8rem;
@@ -148,9 +143,8 @@
   opacity: 0.07;
 }
 
-/* accent top border per card */
 .metric-card--total::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -159,7 +153,7 @@
   background: var(--yellow);
 }
 .metric-card--active::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -168,7 +162,7 @@
   background: var(--s-approved);
 }
 .metric-card--pending::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -224,9 +218,6 @@
   margin: 0;
 }
 
-/* ══════════════════════════════════════════════
-   ACTIVE MONITOR — variasi: terminal / HUD style
-══════════════════════════════════════════════ */
 .history-log__active-monitor {
   border: 1px solid rgba(240, 224, 64, 0.2);
   background: linear-gradient(
@@ -240,7 +231,7 @@
 }
 
 .history-log__active-monitor::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -1px;
   left: -1px;
@@ -251,7 +242,7 @@
 }
 
 .history-log__active-monitor::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -1px;
   right: -1px;
@@ -273,9 +264,8 @@
   gap: 0.6rem;
 }
 
-/* live dot */
 .active-monitor__title::before {
-  content: '';
+  content: "";
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -376,9 +366,6 @@
   align-items: center;
 }
 
-/* ══════════════════════════════════════════════
-   BUTTONS
-══════════════════════════════════════════════ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -406,7 +393,7 @@
 }
 
 .btn--return::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--yellow);
@@ -443,9 +430,6 @@
   background: rgba(96, 165, 250, 0.08);
 }
 
-/* ══════════════════════════════════════════════
-   EMPTY STATE — variasi: terminal error style
-══════════════════════════════════════════════ */
 .history-log__empty-state {
   border: 1px solid rgba(245, 242, 235, 0.08);
   padding: 4rem 2rem;
@@ -455,7 +439,7 @@
 }
 
 .history-log__empty-state::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
@@ -486,9 +470,8 @@
   font-weight: 400;
 }
 
-/* blinking cursor */
 .empty-state__title::after {
-  content: '_';
+  content: "_";
   animation: blink 1s step-end infinite;
 }
 
@@ -510,9 +493,6 @@
   margin: 0;
 }
 
-/* ══════════════════════════════════════════════
-   TABLE SECTION
-══════════════════════════════════════════════ */
 .history-log__table-section {
   display: flex;
   flex-direction: column;
@@ -536,7 +516,6 @@
   background: var(--gray-mid);
 }
 
-/* ─── TABLE ──────────────────────────────────── */
 .history-log__table {
   width: 100%;
   border-collapse: collapse;
@@ -588,28 +567,19 @@
   background: rgba(245, 242, 235, 0.025);
 }
 
-/* .table__row::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 2px;
-  transform: scaleY(0);
-  transition: transform 0.2s ease;
-} */
-
 .table__row:hover::before {
   transform: scaleY(1);
 }
-.table__row[data-status='approved']::before {
+.table__row[data-status="approved"]::before {
   background: var(--s-approved);
 }
-.table__row[data-status='pending']::before {
+.table__row[data-status="pending"]::before {
   background: var(--s-pending);
 }
-.table__row[data-status='rejected']::before {
+.table__row[data-status="rejected"]::before {
   background: var(--s-rejected);
 }
-.table__row[data-status='returned']::before {
+.table__row[data-status="returned"]::before {
   background: var(--s-returned);
 }
 
@@ -703,7 +673,7 @@
 }
 
 .history-status-badge::before {
-  content: '';
+  content: "";
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -743,7 +713,7 @@
   background: rgba(239, 68, 68, 0.1);
   border-left: 3px solid #ef4444;
   padding: 8px 12px;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 12px;
   color: #f8fafc;
   margin-top: 8px;
@@ -754,9 +724,6 @@
   margin-right: 5px;
 }
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════ */
 @media (max-width: 900px) {
   .stats-grid {
     grid-template-columns: 1fr 1fr;

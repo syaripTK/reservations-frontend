@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap");
 
 :root {
   --black: #0a0a0a;
@@ -10,9 +10,9 @@
   --gray-lt: #888888;
   --available: #4ade80;
   --unavailable: #e63030;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-body: 'Manrope', sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-body: "Manrope", sans-serif;
 }
 
 .asset-detail-loading-container {
@@ -52,9 +52,8 @@
   margin: 0;
 }
 
-/* blinking cursor */
 .asset-detail-loading-text::after {
-  content: '_';
+  content: "_";
   animation: cursorBlink 1s step-end infinite;
 }
 
@@ -95,7 +94,7 @@
 
 .asset-detail-error-box::before,
 .asset-detail-not-found-box::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -1px;
   right: -1px;
@@ -186,7 +185,7 @@
 }
 
 .asset-detail-header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -292,7 +291,7 @@
 
 .asset-detail-gallery-figure::before,
 .asset-detail-gallery-figure::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 16px;
   height: 16px;
@@ -362,9 +361,6 @@
   margin: 0;
 }
 
-/* ══════════════════════════════════════════════
-   MAIN CONTENT — kanan
-══════════════════════════════════════════════ */
 .asset-detail-main {
   display: flex;
   flex-direction: column;
@@ -401,7 +397,7 @@
 }
 
 .asset-detail-category::before {
-  content: '//';
+  content: "//";
   color: var(--red);
   font-size: 0.55rem;
 }
@@ -419,7 +415,7 @@
 }
 
 .asset-detail-section-title::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
   background: rgba(245, 242, 235, 0.07);
@@ -462,7 +458,7 @@
 }
 
 .asset-detail-reservation-info::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image:
@@ -485,7 +481,7 @@
 }
 
 .asset-detail-available::before {
-  content: '';
+  content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -519,7 +515,7 @@
 }
 
 .asset-detail-unavailable::before {
-  content: '';
+  content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -548,7 +544,7 @@
 }
 
 .asset-detail-reserve-button::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--red);
@@ -564,9 +560,6 @@
   color: var(--white);
 }
 
-/* ══════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════ */
 .asset-detail-footer {
   padding-top: 1.4rem;
   border-top: 1px solid rgba(245, 242, 235, 0.06);
@@ -602,9 +595,6 @@
   font-weight: 600;
 }
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════ */
 @media (max-width: 900px) {
   .asset-detail-content {
     grid-template-columns: 1fr;

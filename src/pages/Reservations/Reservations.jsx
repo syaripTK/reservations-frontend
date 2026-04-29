@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useOutletContext } from 'react-router-dom';
-import axiosInstance from '../../utils/axiosInstance';
 import {
   ArrowBigLeftDash,
   ArrowBigRightDash,
   ArrowLeftRight,
 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import axiosInstance from '../../utils/axiosInstance';
 import './Reservations.css';
+import Swal from 'sweetalert2';
 import {
   notyfSuccess,
   showErrorNotification,
   showSuccessNotification,
 } from '../../utils/notyf';
-import Swal from 'sweetalert2';
 
 const Reservations = () => {
   const navigate = useNavigate();
@@ -102,7 +102,7 @@ const Reservations = () => {
 
   const handleReject = async (id) => {
     const { value: rejectionReason } = await Swal.fire({
-      title: '<div class="swal-brutalist-title">REJECT // RESERVATION</div>',
+      title: '<div class="swal-brutalist-title">REJECT 
       html: `
       <div class="swal-brutalist-body">
         <div class="input-group">
@@ -153,7 +153,7 @@ const Reservations = () => {
 
   return (
     <div className="assets-wrapper">
-      {/* HEADER */}
+      {}
       <div className="assets-header">
         <div className="assets-header-left">
           <div className="assets-label"># RESERVATIONS</div>
@@ -163,7 +163,7 @@ const Reservations = () => {
         </div>
       </div>
 
-      {/* TABLE */}
+      {}
       <div className="assets-content">
         <div className="table-toolbar">
           <div className="table-toolbar-left">
@@ -241,7 +241,7 @@ const Reservations = () => {
           </table>
         </div>
 
-        {/* PAGINATION */}
+        {}
         <div className="pagination">
           <div className="pagination-info">
             Halaman <span>{currentPage}</span> of <span>{totalPages}</span>

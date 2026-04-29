@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap");
 
-/* ─── VARIABLES ──────────────────────────────── */
 :root {
   --black: #0a0a0a;
   --white: #f5f2eb;
@@ -9,14 +8,11 @@
   --gray: #1a1a1a;
   --gray-mid: #2e2e2e;
   --gray-lt: #888888;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-body: 'Manrope', sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-body: "Manrope", sans-serif;
 }
 
-/* ══════════════════════════════════════════════
-   PAGE CONTAINER
-══════════════════════════════════════════════ */
 .category-page-container {
   display: flex;
   flex-direction: column;
@@ -38,21 +34,16 @@
   }
 }
 
-/* ══════════════════════════════════════════════
-   HEADER — variasi: teks besar + garis diagonal
-══════════════════════════════════════════════ */
 .category-header-section {
   position: relative;
   padding-bottom: 1.6rem;
-  /* display: flex;
-  align-items: flex-end;
-  justify-content: space-between; */
+
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .category-header-section::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -106,7 +97,6 @@
   counter-reset: cat-counter;
 }
 
-/* ─── CARD ITEM ──────────────────────────────── */
 .category-card-item {
   background: var(--gray);
   display: flex;
@@ -140,7 +130,7 @@
 }
 
 .category-card-item::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -168,7 +158,6 @@
   background: #60a5fa;
 }
 
-/* ─── CARD CONTENT ───────────────────────────── */
 .category-card-content {
   padding: 1.6rem 1.4rem 1rem;
   display: flex;
@@ -177,7 +166,6 @@
   flex: 1;
 }
 
-/* ─── ICON ───────────────────────────────────── */
 .category-card-icon {
   width: 36px;
   height: 36px;
@@ -205,7 +193,6 @@
   height: 16px;
 }
 
-/* ─── CARD TITLE ─────────────────────────────── */
 .category-card-title {
   font-family: var(--font-body);
   font-size: 0.92rem;
@@ -216,7 +203,6 @@
   letter-spacing: 0.01em;
 }
 
-/* ─── CARD DESCRIPTION ───────────────────────── */
 .category-card-description {
   font-family: var(--font-body);
   font-size: 0.75rem;
@@ -230,7 +216,6 @@
   overflow: hidden;
 }
 
-/* ─── CARD ACTIONS ───────────────────────────── */
 .category-card-actions {
   display: flex;
   border-top: 1px solid rgba(245, 242, 235, 0.06);
@@ -278,7 +263,7 @@
 }
 
 .add-category-section::before {
-  content: 'NEW';
+  content: "NEW";
   position: absolute;
   right: -1rem;
   bottom: -1.5rem;
@@ -297,7 +282,6 @@
   z-index: 1;
 }
 
-/* ─── SECTION TITLE ──────────────────────────── */
 .add-category-title {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 3vw, 2rem);
@@ -310,9 +294,8 @@
   gap: 0.8rem;
 }
 
-/* label tag di sebelah judul */
 .add-category-title::before {
-  content: '//';
+  content: "//";
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--red);
@@ -320,7 +303,6 @@
   font-weight: 400;
 }
 
-/* ─── FORM LAYOUT ────────────────────────────── */
 .add-category-form {
   display: flex;
   flex-direction: column;
@@ -340,7 +322,6 @@
   gap: 0.5rem;
 }
 
-/* ─── LABELS ─────────────────────────────────── */
 .form-label-category-name,
 .form-label-category-description,
 .form-label-category-icon {
@@ -351,7 +332,6 @@
   text-transform: uppercase;
 }
 
-/* ─── INPUTS ─────────────────────────────────── */
 .form-input-category-name,
 .form-input-category-icon,
 .form-textarea-category-description {
@@ -403,7 +383,6 @@
   letter-spacing: 0;
 }
 
-/* ─── ACTIONS ────────────────────────────────── */
 .form-actions-wrapper {
   display: flex;
   align-items: center;
@@ -431,7 +410,7 @@
 }
 
 .form-submit-btn-category::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--red);
@@ -470,10 +449,6 @@
   color: var(--white);
 }
 
-/* ==============================================
-   FORM EDIT
-================================================*/
-
 .swal-brutalist-popup {
   border-radius: 0 !important;
   border: 2px solid #1e293b !important;
@@ -484,7 +459,7 @@
 
 .swal-brutalist-title {
   text-align: left;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 900;
   font-size: 1.2rem;
   letter-spacing: 3px;
@@ -522,7 +497,7 @@
   border-radius: 0 !important;
   color: #f8fafc !important;
   padding: 12px 15px !important;
-  font-family: 'Courier New', monospace !important;
+  font-family: "Courier New", monospace !important;
   font-size: 14px;
   outline: none;
 }
@@ -574,9 +549,6 @@
   color: #ef4444 !important;
 }
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════ */
 @media (max-width: 900px) {
   .form-group-wrapper {
     grid-template-columns: 1fr 1fr;

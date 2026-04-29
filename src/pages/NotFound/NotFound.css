@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;700;800&display=swap");
 
 :root {
   --black: #0a0a0a;
@@ -8,9 +8,9 @@
   --gray: #1a1a1a;
   --gray-mid: #2e2e2e;
   --gray-lt: #888888;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-body: 'Manrope', sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-body: "Manrope", sans-serif;
 }
 
 .nf-page {
@@ -186,7 +186,6 @@
   font-weight: 500;
 }
 
-/* ─── MAIN TITLE ─────────────────────────────── */
 .nf-title {
   display: flex;
   flex-direction: column;
@@ -231,7 +230,6 @@
   }
 }
 
-/* ─── DESC ───────────────────────────────────── */
 .nf-desc {
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -243,7 +241,6 @@
   animation: nfFadeUp 0.7s ease 0.4s both;
 }
 
-/* ─── ACTIONS ────────────────────────────────── */
 .nf-actions {
   display: flex;
   gap: 0.8rem;
@@ -268,7 +265,7 @@
 }
 
 .nf-btn-primary::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--red);
@@ -313,7 +310,6 @@
   z-index: 1;
 }
 
-/* ─── FOOTER TAG ─────────────────────────────── */
 .nf-footer-tag {
   display: flex;
   align-items: center;
@@ -338,9 +334,6 @@
   font-size: 0.6rem;
 }
 
-/* ══════════════════════════════════════════════
-   RIGHT — slot gambar
-══════════════════════════════════════════════ */
 .nf-right {
   display: flex;
   align-items: center;
@@ -359,7 +352,6 @@
   }
 }
 
-/* ─── IMAGE SLOT ─────────────────────────────── */
 .nf-image-slot {
   position: relative;
   width: 100%;
@@ -370,7 +362,6 @@
   justify-content: center;
 }
 
-/* ─── GAMBAR ─────────────────────────────────── */
 .nf-image {
   width: 100%;
   height: 100%;
@@ -390,7 +381,6 @@
   }
 }
 
-/* ─── PLACEHOLDER (sebelum gambar diisi) ─────── */
 .nf-placeholder {
   width: 100%;
   height: 100%;
@@ -428,7 +418,6 @@
   border: 1px solid rgba(240, 224, 64, 0.1);
 }
 
-/* ─── CORNER BRACKETS ────────────────────────── */
 .nf-bracket {
   position: absolute;
   width: 18px;
@@ -459,9 +448,6 @@
   border-width: 0 2px 2px 0;
 }
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .nf-inner {
     grid-template-columns: 1fr;

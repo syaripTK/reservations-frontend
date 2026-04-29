@@ -13,25 +13,24 @@ axiosInstance.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      
       if (!window.location.pathname.includes('/login')) {
         localStorage.removeItem('token');
-        
-        notyfError("SESI BERAKHIR. SILAKAN LOGIN KEMBALI.");
+
+        notyfError('SESI BERAKHIR. SILAKAN LOGIN KEMBALI.');
 
         setTimeout(() => {
-          window.location.href = '/login'; 
+          window.location.href = '/login';
         }, 2000);
       }
     }
-    
+
     return Promise.reject(error);
   },
 );

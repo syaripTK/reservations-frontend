@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import './MyHistory.css';
-import { notyfError, notyfSuccess } from '../../utils/notyf';
-import formatDate from '../../utils/date/formatDate';
 import calculateRemains from '../../utils/date/calculateRemains';
+import formatDate from '../../utils/date/formatDate';
+import { notyfError, notyfSuccess } from '../../utils/notyf';
 
 const MyHistory = () => {
   const navigate = useNavigate();
@@ -82,7 +82,7 @@ const MyHistory = () => {
 
   return (
     <div className="history-log">
-      {/* ===== HEADER COMPONENT ===== */}
+      {}
       <header className="history-log__header">
         <div className="history-log__title-wrapper">
           <div className="assets-label">// history log</div>
@@ -92,28 +92,28 @@ const MyHistory = () => {
         </div>
       </header>
 
-      {/* ===== STATS/OVERVIEW SECTION ===== */}
+      {}
       <section className="history-log__stats" aria-labelledby="stats-heading">
         <h2 id="stats-heading" className="visually-hidden">
           Overview Statistics
         </h2>
 
         <div className="stats-grid">
-          {/* Metric Card 1: Total Reservations */}
+          {}
           <article className="metric-card metric-card--total">
             <h3 className="metric-card__label">TOTAL_RESERVATIONS</h3>
             <div className="metric-card__value">{totalReservations}</div>
             <p className="metric-card__description">All time records</p>
           </article>
 
-          {/* Metric Card 2: Active Assets */}
+          {}
           <article className="metric-card metric-card--active">
             <h3 className="metric-card__label">ACTIVE_ASSETS</h3>
             <div className="metric-card__value">{activeAssets}</div>
             <p className="metric-card__description">Currently approved</p>
           </article>
 
-          {/* Metric Card 3: Pending Queue */}
+          {}
           <article className="metric-card metric-card--pending">
             <h3 className="metric-card__label">PENDING_QUEUE</h3>
             <div className="metric-card__value">{pendingQueue}</div>
@@ -122,7 +122,7 @@ const MyHistory = () => {
         </div>
       </section>
 
-      {/* ===== ACTIVE MONITOR SECTION (CONDITIONAL) ===== */}
+      {}
       {hasActiveReservations && (
         <section
           className="history-log__active-monitor"

@@ -12,7 +12,7 @@
 }
 
 .login-page::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   background-image:
@@ -24,7 +24,7 @@
 }
 
 .login-page::after {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -35,7 +35,7 @@
 
 .login-container::before,
 .login-container::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 18px;
   height: 18px;
@@ -104,7 +104,7 @@
 }
 
 .status-text::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 6px;
   height: 6px;
@@ -247,7 +247,7 @@
   user-select: none;
 }
 
-.custom-checkbox input[type='checkbox'] {
+.custom-checkbox input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   width: 14px;
@@ -260,13 +260,13 @@
   transition: border-color 0.2s;
 }
 
-.custom-checkbox input[type='checkbox']:checked {
+.custom-checkbox input[type="checkbox"]:checked {
   background: var(--yellow);
   border-color: var(--yellow);
 }
 
-.custom-checkbox input[type='checkbox']:checked::after {
-  content: '';
+.custom-checkbox input[type="checkbox"]:checked::after {
+  content: "";
   position: absolute;
   left: 3px;
   top: 1px;
@@ -278,7 +278,7 @@
   transform: rotate(45deg);
 }
 
-.custom-checkbox:hover input[type='checkbox'] {
+.custom-checkbox:hover input[type="checkbox"] {
   border-color: var(--yellow);
 }
 
@@ -313,7 +313,7 @@
 }
 
 .submit-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--red);

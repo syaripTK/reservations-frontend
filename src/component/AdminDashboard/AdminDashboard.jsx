@@ -1,25 +1,25 @@
-import { useState, useEffect, useRef } from 'react';
 import {
-  Chart as ChartJS,
   ArcElement,
-  Tooltip,
-  Legend,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Filler,
+  Legend,
+  LinearScale,
   LineElement,
   PointElement,
-  Filler,
+  Tooltip,
 } from 'chart.js';
-import { Doughnut, Bar, Line } from 'react-chartjs-2';
+import { useEffect, useRef, useState } from 'react';
+import { Bar, Doughnut, Line } from 'react-chartjs-2';
 import './AdminDashboard.css';
+import Swal from 'sweetalert2';
+import axiosInstance from '../../utils/axiosInstance';
 import {
   notyfSuccess,
   showErrorNotification,
   showSuccessNotification,
 } from '../../utils/notyf';
-import axiosInstance from '../../utils/axiosInstance';
-import Swal from 'sweetalert2';
 
 ChartJS.register(
   ArcElement,
@@ -228,7 +228,7 @@ const AdminDashboard = ({ statsData, summaryData }) => {
 
   const handleReject = async (id) => {
     const { value: rejectionReason } = await Swal.fire({
-      title: '<div class="swal-brutalist-title">REJECT // RESERVATION</div>',
+      title: '<div class="swal-brutalist-title">REJECT 
       html: `
         <div class="swal-brutalist-body">
           <div class="input-group">
